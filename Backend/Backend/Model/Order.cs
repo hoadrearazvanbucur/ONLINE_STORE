@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Backend.Class
 {
-    class Order
+    public class Order
     {
         private int id, customer_id, ammount;
         private string order_address;
