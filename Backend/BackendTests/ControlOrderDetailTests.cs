@@ -1,4 +1,6 @@
 ﻿using Backend.ControlClass;
+using Backend.Controller;
+using Backend.Class;
 using Backend.Model.Products;
 using System;
 using System.Collections.Generic;
@@ -8,20 +10,19 @@ using Xunit.Abstractions;
 
 namespace BackendTests
 {
-    public class ControlProductTests
+    public class ControlOrderDetailTests
     {
         private readonly ITestOutputHelper outputHelper;
 
-        public ControlProductTests(ITestOutputHelper output)
+        public ControlOrderDetailTests(ITestOutputHelper output)
         {
             this.outputHelper = output;
         }
 
         [Fact]
-
         public void load()
         {
-            ControlProduct control = new ControlProduct();
+            ControlOrderDetail control = new ControlOrderDetail();
             outputHelper.WriteLine(control.afisare());
         }
 
@@ -29,12 +30,12 @@ namespace BackendTests
 
         public void saveAdaugareStergere()
         {
-            ControlProduct control = new ControlProduct();
+            ControlOrderDetail control = new ControlOrderDetail();
             control.stergere(3);
-            control.adaugare(new Phone(new string[] { "phone", "3", "3", "3", "3", "3", "3", "3", "3333", " 3333", "3333", "3333", "3333" }));
-            outputHelper.WriteLine(control.afisare()+"\n\n");
+            control.adaugare(new OrderDetail(new string[] {"1", "1", "1", "1", "1", "1", "1"}));
+            outputHelper.WriteLine(control.afisare() + "\n\n");
 
-            ControlProduct control1 = new ControlProduct();
+            ControlOrderDetail control1 = new ControlOrderDetail();
             outputHelper.WriteLine(control1.afisare());
         }
 
@@ -42,7 +43,7 @@ namespace BackendTests
 
         public void toString()
         {
-            ControlProduct control = new ControlProduct();
+            ControlOrderDetail control = new ControlOrderDetail();
             outputHelper.WriteLine(control.ToString());
         }
 
@@ -50,11 +51,11 @@ namespace BackendTests
 
         public void modificare()
         {
-            ControlProduct control = new ControlProduct();
+            ControlOrderDetail control = new ControlOrderDetail();
             outputHelper.WriteLine(control.afisare() + "\n\n");
 
-            control.updateName(3, "TEST1");
-            control.updatePhoneName(3, "TEST2");
+            control.updatePrice(3, 1);
+            control.updateQuantity(3, 1);
 
             outputHelper.WriteLine(control.afisare() + "\n\n");
 

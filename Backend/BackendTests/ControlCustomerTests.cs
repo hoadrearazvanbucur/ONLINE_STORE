@@ -1,4 +1,6 @@
-﻿using Backend.ControlClass;
+﻿using Backend.Class;
+using Backend.ControlClass;
+using Backend.Controller;
 using Backend.Model.Products;
 using System;
 using System.Collections.Generic;
@@ -8,20 +10,19 @@ using Xunit.Abstractions;
 
 namespace BackendTests
 {
-    public class ControlProductTests
+    public class ControlCustomerTests
     {
         private readonly ITestOutputHelper outputHelper;
 
-        public ControlProductTests(ITestOutputHelper output)
+        public ControlCustomerTests(ITestOutputHelper output)
         {
             this.outputHelper = output;
         }
 
         [Fact]
-
         public void load()
         {
-            ControlProduct control = new ControlProduct();
+            ControlCustomer control = new ControlCustomer();
             outputHelper.WriteLine(control.afisare());
         }
 
@@ -29,20 +30,16 @@ namespace BackendTests
 
         public void saveAdaugareStergere()
         {
-            ControlProduct control = new ControlProduct();
-            control.stergere(3);
-            control.adaugare(new Phone(new string[] { "phone", "3", "3", "3", "3", "3", "3", "3", "3333", " 3333", "3333", "3333", "3333" }));
-            outputHelper.WriteLine(control.afisare()+"\n\n");
+            ControlCustomer control = new ControlCustomer();
+            control.adaugare(new Customer(new string[] { "1", "1", "1", "1", "1", "1", "1" }));
 
-            ControlProduct control1 = new ControlProduct();
-            outputHelper.WriteLine(control1.afisare());
         }
 
         [Fact]
 
         public void toString()
         {
-            ControlProduct control = new ControlProduct();
+            ControlCustomer control = new ControlCustomer();
             outputHelper.WriteLine(control.ToString());
         }
 
@@ -50,11 +47,12 @@ namespace BackendTests
 
         public void modificare()
         {
-            ControlProduct control = new ControlProduct();
+            ControlCustomer control = new ControlCustomer();
             outputHelper.WriteLine(control.afisare() + "\n\n");
 
-            control.updateName(3, "TEST1");
-            control.updatePhoneName(3, "TEST2");
+            control.updateEmail(3, "TEST1");
+            control.updateFullName(3, "TEST2");
+            control.updatePassword(3, "TEST3");
 
             outputHelper.WriteLine(control.afisare() + "\n\n");
 

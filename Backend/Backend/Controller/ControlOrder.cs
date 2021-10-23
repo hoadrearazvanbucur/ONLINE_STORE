@@ -65,21 +65,24 @@ namespace Backend.Controller
 
         public void stergere(int id)
         {
-            this.orders.RemoveAt(productId(id));
+            this.orders.RemoveAt(orderId(id));
             save();
         }
 
 
-        //Product
-        public void updateName(int id, string numeNou)
+        public void updateOrderAdress(int id, string orderAdressNou)
         {
-            orders[productId(id)].Order_Address = numeNou;//a
+            orders[orderId(id)].Order_Address = orderAdressNou;
         }
-        
-        
+        public void updateAmmount(int id, int ammountNou)
+        {
+            orders[orderId(id)].Ammount = ammountNou;
+        }
 
 
-        public int productId(int id)
+
+
+        public int orderId(int id)
         {
             int k = 0;
             foreach (Order order in orders)

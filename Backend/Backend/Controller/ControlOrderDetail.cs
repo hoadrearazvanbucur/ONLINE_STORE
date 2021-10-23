@@ -1,16 +1,18 @@
-﻿using System;
+﻿using Backend.Class;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace Backend.Controller
 {
     public class ControlOrderDetail
     {
-        private List<Order> orders;
+        private List<OrderDetail> orderDetails;
 
-        public ControlOrder()
+        public ControlOrderDetail()
         {
-            orders = new List<Order>();
+            orderDetails = new List<OrderDetail>();
             load();
         }
 
@@ -23,7 +25,7 @@ namespace Backend.Controller
             while ((linie = fisier.ReadLine()) != null)
             {
                 string[] linieSplit = linie.Split(',');
-                orders.Add(new Order(linieSplit));
+                orderDetails.Add(new OrderDetail(linieSplit));
             }
             fisier.Close();
         }
@@ -39,9 +41,9 @@ namespace Backend.Controller
         public override string ToString()
         {
             string text = "";
-            foreach (Order order in orders)
+            foreach (OrderDetail orderDetail in orderDetails)
             {
-                text += order + "\n";
+                text += orderDetail + "\n";
             }
             return text;
         }
@@ -50,54 +52,58 @@ namespace Backend.Controller
         public string afisare()
         {
             string afis = "";
-            foreach (Order order in orders)
-                afis += order.afisare();
+            foreach (OrderDetail orderDetail in orderDetails)
+                afis += orderDetail.afisare();
             return afis;
         }
 
-        public void adaugare(Order order)
+        public void adaugare(OrderDetail orderDetail)
         {
-            orders.Add(order);
+            orderDetails.Add(orderDetail);
             save();
         }
 
         public void stergere(int id)
         {
-            this.orders.RemoveAt(productId(id));
+            this.orderDetails.RemoveAt(orderDetailId(id));
             save();
         }
 
 
-        //Product
-        public void updateName(int id, string numeNou)
+        public void updateQuantity(int id, int quantityNou)
         {
-            orders[productId(id)].Order_Address = numeNou;//a
+            orderDetails[orderDetailId(id)].Quantity = quantityNou;
+        }
+        public void updatePrice(int id, int priceNou)
+        {
+            orderDetails[orderDetailId(id)].Price = priceNou;
         }
 
 
 
 
-        public int productId(int id)
+
+        public int orderDetailId(int id)
         {
             int k = 0;
-            foreach (Order order in orders)
-                if (order.Id == id) return k;
+            foreach (OrderDetail orderDetail in orderDetails)
+                if (orderDetail.Id == id) return k;
                 else k++;
             return -1;
         }
 
 
-        public List<Order> Order
+        public List<OrderDetail> OrderDetail
         {
-            get => this.orders;
-            set => this.orders = value;
+            get => this.orderDetails;
+            set => this.orderDetails = value;
         }
 
 
         public int nextId()
         {
-            if (this.orders.Count > 0)
-                return this.orders[this.orders.Count - 1].Id + 1;
+            if (this.orderDetails.Count > 0)
+                return this.orderDetails[this.orderDetails.Count - 1].Id + 1;
             else
                 return 1;
         }

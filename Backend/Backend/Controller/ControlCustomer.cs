@@ -1,16 +1,18 @@
-﻿using System;
+﻿using Backend.Class;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace Backend.Controller
 {
     public class ControlCustomer
     {
-        private List<Order> orders;
+        private List<Customer> customers;
 
-        public ControlOrder()
+        public ControlCustomer()
         {
-            orders = new List<Order>();
+            customers = new List<Customer>();
             load();
         }
 
@@ -23,7 +25,7 @@ namespace Backend.Controller
             while ((linie = fisier.ReadLine()) != null)
             {
                 string[] linieSplit = linie.Split(',');
-                orders.Add(new Order(linieSplit));
+                customers.Add(new Customer(linieSplit));
             }
             fisier.Close();
         }
@@ -39,9 +41,9 @@ namespace Backend.Controller
         public override string ToString()
         {
             string text = "";
-            foreach (Order order in orders)
+            foreach (Customer customer in customers)
             {
-                text += order + "\n";
+                text += customer + "\n";
             }
             return text;
         }
@@ -50,54 +52,62 @@ namespace Backend.Controller
         public string afisare()
         {
             string afis = "";
-            foreach (Order order in orders)
-                afis += order.afisare();
+            foreach (Customer customer in customers)
+                afis += customer.afisare();
             return afis;
         }
 
-        public void adaugare(Order order)
+        public void adaugare(Customer customer)
         {
-            orders.Add(order);
+            customers.Add(customer);
             save();
         }
 
         public void stergere(int id)
         {
-            this.orders.RemoveAt(productId(id));
+            this.customers.RemoveAt(customerId(id));
             save();
         }
 
 
-        //Product
-        public void updateName(int id, string numeNou)
+        public void updateEmail(int id, string emailNou)
         {
-            orders[productId(id)].Order_Address = numeNou;//a
+            customers[customerId(id)].Email = emailNou;
+        }
+        public void updatePassword(int id, string passwordNou)
+        {
+            customers[customerId(id)].Password = passwordNou;
+        }
+        public void updateFullName(int id, string fullNameNou)
+        {
+            customers[customerId(id)].FullName = fullNameNou;
         }
 
 
 
 
-        public int productId(int id)
+
+        public int customerId(int id)
         {
             int k = 0;
-            foreach (Order order in orders)
-                if (order.Id == id) return k;
+            foreach (Customer customer in customers)
+                if (customer.Id == id) return k;
                 else k++;
             return -1;
         }
 
 
-        public List<Order> Order
+        public List<Customer> Customers
         {
-            get => this.orders;
-            set => this.orders = value;
+            get => this.customers;
+            set => this.customers = value;
         }
 
 
         public int nextId()
         {
-            if (this.orders.Count > 0)
-                return this.orders[this.orders.Count - 1].Id + 1;
+            if (this.customers.Count > 0)
+                return this.customers[this.customers.Count - 1].Id + 1;
             else
                 return 1;
         }
