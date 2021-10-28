@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using Backend.Model.Products;
+using System.Linq;
 
 namespace Backend.ControlClass
 {
@@ -11,6 +12,7 @@ namespace Backend.ControlClass
     {
         private List<Product> products;
 
+       
         public ControlProduct()
         {
             products = new List<Product>();
@@ -20,10 +22,11 @@ namespace Backend.ControlClass
 
         public void load()
         {
-            string path = @"D:\1_PROGRAMARE\C#\ONLINE_STORE\TEST.txt";
-            StreamReader fisier = new StreamReader(path);
+            this.products.Clear();
+            StreamReader fisier = new StreamReader(@"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\productFile.txt");
             string linie = "";
-            while ((linie = fisier.ReadLine()) != null){
+            while ((linie = fisier.ReadLine()) != null)
+            {
                 string[] linieSplit = linie.Split(',');
                 if (linieSplit[0] == "phone")
                     products.Add(new Phone(linieSplit));
@@ -33,8 +36,7 @@ namespace Backend.ControlClass
         }
         public void save()
         {
-            string path = @"D:\1_PROGRAMARE\C#\ONLINE_STORE\TEST.txt";
-            StreamWriter fisier = new StreamWriter(path);
+            StreamWriter fisier = new StreamWriter(@"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\productFile.txt");
             fisier.WriteLine(this.ToString());
             fisier.Close();
         }
@@ -42,10 +44,11 @@ namespace Backend.ControlClass
 
         public override string ToString()
         {
-            string text="";
+            string text = "";
             foreach (Product product in products)
-            {
-                text += product + "\n";
+            { 
+                if(product is Phone)
+                text += (product as Phone)+ "\n";
             }
             return text;
         }
@@ -68,39 +71,39 @@ namespace Backend.ControlClass
         public void adaugare(Product product)
         {
             this.products.Add(product);
-            save();
+           
         }
         public void stergere(int id)
         {
             this.products.RemoveAt(productId(id));
-            save();
+            
         }
 
 
         //Product
-        public void updateName(int id ,string numeNou)
+        public void updateName(int id, string numeNou)
         {
-            products[productId(id)].Name= numeNou;
+            products[productId(id)].Name = numeNou;
         }
         public void updateDescription(int id, string descriereNou)
         {
-            products[productId(id)].Description= descriereNou;
+            products[productId(id)].Description = descriereNou;
         }
         public void updateDate(int id, string dataNou)
         {
-            products[productId(id)].Date= dataNou;
+            products[productId(id)].Date = dataNou;
         }
         public void updateImage(int id, string imagineNou)
         {
-            products[productId(id)].Image= imagineNou;
+            products[productId(id)].Image = imagineNou;
         }
         public void updateStock(int id, int stocNou)
         {
-            products[productId(id)].Stock= stocNou;
+            products[productId(id)].Stock = stocNou;
         }
         public void updatePrice(int id, int pretNou)
         {
-            products[productId(id)].Price= pretNou;
+            products[productId(id)].Price = pretNou;
         }
 
         //Phone
@@ -136,10 +139,21 @@ namespace Backend.ControlClass
         }
 
 
+        public Product produsId(int id)
+        {
+            foreach (Product produs in products)
+                if (produs.Id.Equals(id) == true)
+                    return produs;
+            return null;
+        }
         public List<Product> Products
         {
             get => this.products;
             set => this.products = value;
+        }
+        public List<Product> afisareCard
+        {
+            get => this.products;
         }
 
 

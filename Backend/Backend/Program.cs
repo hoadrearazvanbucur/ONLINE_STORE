@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Backend.ControlClass;
+using System;
 
 namespace Backend
 {
@@ -6,7 +7,7 @@ namespace Backend
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
         }
     }
 }

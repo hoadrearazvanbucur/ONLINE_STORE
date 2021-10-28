@@ -13,53 +13,70 @@ namespace BackendTests
     public class ControlOrderDetailTests
     {
         private readonly ITestOutputHelper outputHelper;
-
         public ControlOrderDetailTests(ITestOutputHelper output)
         {
             this.outputHelper = output;
         }
 
-        [Fact]
-        public void load()
-        {
-            ControlOrderDetail control = new ControlOrderDetail();
-            outputHelper.WriteLine(control.afisare());
-        }
 
         [Fact]
-
         public void saveAdaugareStergere()
         {
+            //Preconditie
             ControlOrderDetail control = new ControlOrderDetail();
-            control.stergere(3);
-            control.adaugare(new OrderDetail(new string[] {"1", "1", "1", "1", "1", "1", "1"}));
-            outputHelper.WriteLine(control.afisare() + "\n\n");
+            string[] o1 = new string[] { "1", "1", "1", "1", "1"};
+            OrderDetail orderDetail1 = new OrderDetail(o1);
 
-            ControlOrderDetail control1 = new ControlOrderDetail();
-            outputHelper.WriteLine(control1.afisare());
+            //PostConditie
+            control.adaugare(orderDetail1);
+
+            //Actiune
+            control.save();
+            control.load();
+
+            //Verificare
+            Assert.True(control.orderDetailId(1) >= 0);
+
+
+            //PostConditie
+            control.stergere(1);
+
+            //Actiune
+            control.save();
+            control.load();
+
+            //Verificare
+            Assert.True(control.orderDetailId(1) < 0);
         }
 
         [Fact]
-
-        public void toString()
+        public void updateQuantity()
         {
             ControlOrderDetail control = new ControlOrderDetail();
-            outputHelper.WriteLine(control.ToString());
+            string[] p1 = new string[] {"1", "1", "1", "1", "1"};
+            OrderDetail orderDetail1 = new OrderDetail(p1);
+            control.adaugare(orderDetail1);
+
+            control.updateQuantity(1, 123);
+            Assert.Equal(123, control.orderDetailObjectId(1).Quantity);
+
+            control.stergere(1);
         }
 
-        [Fact]
-
-        public void modificare()
+        public void update()
         {
             ControlOrderDetail control = new ControlOrderDetail();
-            outputHelper.WriteLine(control.afisare() + "\n\n");
+            string[] p1 = new string[] { "1", "1", "1", "1", "1" };
+            OrderDetail orderDetail1 = new OrderDetail(p1);
+            control.adaugare(orderDetail1);
 
-            control.updatePrice(3, 1);
-            control.updateQuantity(3, 1);
+            control.updatePrice(1, 123);
+            Assert.Equal(123, control.orderDetailObjectId(1).Price);
 
-            outputHelper.WriteLine(control.afisare() + "\n\n");
-
+            control.stergere(1);
         }
+
+
 
     }
 }

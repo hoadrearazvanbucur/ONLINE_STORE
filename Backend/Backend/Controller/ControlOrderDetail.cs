@@ -19,8 +19,7 @@ namespace Backend.Controller
 
         public void load()
         {
-            string path = @"D:\1_PROGRAMARE\C#\ONLINE_STORE\TEST.txt";
-            StreamReader fisier = new StreamReader(path);
+            StreamReader fisier = new StreamReader(@"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\orderDetailFile.txt");
             string linie = "";
             while ((linie = fisier.ReadLine()) != null)
             {
@@ -31,8 +30,7 @@ namespace Backend.Controller
         }
         public void save()
         {
-            string path = @"D:\1_PROGRAMARE\C#\ONLINE_STORE\TEST.txt";
-            StreamWriter fisier = new StreamWriter(path);
+            StreamWriter fisier = new StreamWriter(@"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\orderDetailFile.txt");
             fisier.WriteLine(this.ToString());
             fisier.Close();
         }
@@ -91,7 +89,13 @@ namespace Backend.Controller
                 else k++;
             return -1;
         }
-
+        public OrderDetail orderDetailObjectId(int id)
+        {
+            foreach (OrderDetail orderDetail in orderDetails)
+                if (orderDetail.Id.Equals(id) == true)
+                    return orderDetail;
+            return null;
+        }
 
         public List<OrderDetail> OrderDetail
         {
