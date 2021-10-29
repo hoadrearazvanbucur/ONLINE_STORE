@@ -14,51 +14,196 @@ namespace BackendTests
     {
         private readonly ITestOutputHelper outputHelper;
 
-        public ControlOrderTests(ITestOutputHelper output)
+        public ControlProductTests(ITestOutputHelper output)
         {
             this.outputHelper = output;
         }
 
-        [Fact]
-        public void load()
-        {
-            ControlOrder control = new ControlOrder();
-            outputHelper.WriteLine(control.afisare());
-        }
 
         [Fact]
-
         public void saveAdaugareStergere()
         {
-            ControlOrder control = new ControlOrder();
+            //Preconditie
+            ControlProduct control = new ControlProduct();
+            string[] p1 = new string[] { "phone", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" };
+            Phone product1 = new Phone(p1);
+            string[] p2 = new string[] { "phone", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2" };
+            Phone product2 = new Phone(p2);
+            string[] p3 = new string[] { "phone", "3", "3", "3", "3", "3", "3", "3", "3", "3", "3", "3", "3" };
+            Phone product3 = new Phone(p3);
+
+            //PostConditie
+            control.adaugare(product1);
+            control.adaugare(product2);
+            control.adaugare(product3);
+
+            //Actiune
+            control.save();
+            control.load();
+
+            //Verificare
+            Assert.True(control.productId(1) >= 0);
+            Assert.True(control.productId(2) >= 0);
+            Assert.True(control.productId(3) >= 0);
+
+
+            //PostConditie
+            control.stergere(1);
+            control.stergere(2);
             control.stergere(3);
-            control.adaugare(new Order(new string[] {"1", "1", "1", "1","1","1"}));
-            outputHelper.WriteLine(control.afisare() + "\n\n");
 
-            ControlOrder control1 = new ControlOrder();
-            outputHelper.WriteLine(control1.afisare());
+            //Actiune
+            control.save();
+            control.load();
+
+            //Verificare
+            Assert.True(control.productId(1) < 0);
+            Assert.True(control.productId(2) < 0);
+            Assert.True(control.productId(3) < 0);
         }
 
         [Fact]
-
-        public void toString()
+        public void updateName()
         {
-            ControlOrder control = new ControlOrder();
-            outputHelper.WriteLine(control.ToString());
+            ControlProduct control = new ControlProduct();
+            string[] p1 = new string[] { "phone", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" };
+            Phone product1 = new Phone(p1);
+            control.adaugare(product1);
+
+            control.updateName(1, "TEST NUME");
+            Assert.Equal("TEST NUME", control.produsId(1).Name);
+
+            control.stergere(1);
         }
-
         [Fact]
-
-        public void modificare()
+        public void updateDescription()
         {
-            ControlOrder control = new ControlOrder();
-            outputHelper.WriteLine(control.afisare() + "\n\n");
+            ControlProduct control = new ControlProduct();
+            string[] p1 = new string[] { "phone", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" };
+            Phone product1 = new Phone(p1);
+            control.adaugare(product1);
 
-            control.updateAmmount(3, 3);
-            control.updateOrderAdress(3, "TEST1");
+            control.updateDescription(1, "TEST DESCRIERE");
+            Assert.Equal("TEST DESCRIERE", control.produsId(1).Description);
 
-            outputHelper.WriteLine(control.afisare() + "\n\n");
+            control.stergere(1);
+        }
+        [Fact]
+        public void updateDate()
+        {
+            ControlProduct control = new ControlProduct();
+            string[] p1 = new string[] { "phone", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" };
+            Phone product1 = new Phone(p1);
+            control.adaugare(product1);
 
+            control.updateDate(1, "TEST DATA");
+            Assert.Equal("TEST DATA", control.produsId(1).Date);
+
+            control.stergere(1);
+        }
+        [Fact]
+        public void updateImage()
+        {
+            ControlProduct control = new ControlProduct();
+            string[] p1 = new string[] { "phone", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" };
+            Phone product1 = new Phone(p1);
+            control.adaugare(product1);
+
+            control.updateImage(1, "TEST IMAGINE");
+            Assert.Equal("TEST IMAGINE", control.produsId(1).Image);
+
+            control.stergere(1);
+        }
+        [Fact]
+        public void updateStock()
+        {
+            ControlProduct control = new ControlProduct();
+            string[] p1 = new string[] { "phone", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" };
+            Phone product1 = new Phone(p1);
+            control.adaugare(product1);
+
+            control.updateStock(1, 123);
+            Assert.Equal(123, control.produsId(1).Stock);
+
+            control.stergere(1);
+        }
+        [Fact]
+        public void updatePrice()
+        {
+            ControlProduct control = new ControlProduct();
+            string[] p1 = new string[] { "phone", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" };
+            Phone product1 = new Phone(p1);
+            control.adaugare(product1);
+
+            control.updatePrice(1, 1234);
+            Assert.Equal(1234, control.produsId(1).Price);
+
+            control.stergere(1);
+        }
+        [Fact]
+        public void updatePhoneName()
+        {
+            ControlProduct control = new ControlProduct();
+            string[] p1 = new string[] { "phone", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" };
+            Phone product1 = new Phone(p1);
+            control.adaugare(product1);
+
+            control.updatePhoneName(1, "TEST Telefon Nume");
+            Assert.Equal("TEST Telefon Nume", (control.produsId(1) as Phone).PhoneName);
+
+            control.stergere(1);
+        }
+        [Fact]
+        public void updatePhoneColor()
+        {
+            ControlProduct control = new ControlProduct();
+            string[] p1 = new string[] { "phone", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" };
+            Phone product1 = new Phone(p1);
+            control.adaugare(product1);
+
+            control.updatePhoneColor(1, "TEST Culoare");
+            Assert.Equal("TEST Culoare", (control.produsId(1) as Phone).PhoneColor);
+
+            control.stergere(1);
+        }
+        [Fact]
+        public void updateScreenSize()
+        {
+            ControlProduct control = new ControlProduct();
+            string[] p1 = new string[] { "phone", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" };
+            Phone product1 = new Phone(p1);
+            control.adaugare(product1);
+
+            control.updateScreenSize(1, 12345);
+            Assert.Equal(12345, (control.produsId(1) as Phone).ScreenSize);
+
+            control.stergere(1);
+        }
+        [Fact]
+        public void updateStorage()
+        {
+            ControlProduct control = new ControlProduct();
+            string[] p1 = new string[] { "phone", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" };
+            Phone product1 = new Phone(p1);
+            control.adaugare(product1);
+
+            control.updateStorage(1, 123456);
+            Assert.Equal(123456, (control.produsId(1) as Phone).Storage);
+
+            control.stergere(1);
+        }
+        [Fact]
+        public void updateBatteryCapacity()
+        {
+            ControlProduct control = new ControlProduct();
+            string[] p1 = new string[] { "phone", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" };
+            Phone product1 = new Phone(p1);
+            control.adaugare(product1);
+
+            control.updateBatteryCapacity(1, 1234567);
+            Assert.Equal(1234567, (control.produsId(1) as Phone).BatteryCapacity);
+
+            control.stergere(1);
         }
 
     }
