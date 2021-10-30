@@ -12,7 +12,7 @@ namespace Backend.ControlClass
     {
         private List<Product> products;
 
-       
+
         public ControlProduct()
         {
             products = new List<Product>();
@@ -37,20 +37,9 @@ namespace Backend.ControlClass
         public void save()
         {
             StreamWriter fisier = new StreamWriter(@"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\productFile.txt");
-            fisier.WriteLine(this.ToString());
-            fisier.Close();
-        }
-
-
-        public override string ToString()
-        {
-            string text = "";
             foreach (Product product in products)
-            { 
-                if(product is Phone)
-                text += (product as Phone)+ "\n";
-            }
-            return text;
+                fisier.WriteLine((product as Phone).ToString());
+            fisier.Close();
         }
 
 
@@ -71,12 +60,12 @@ namespace Backend.ControlClass
         public void adaugare(Product product)
         {
             this.products.Add(product);
-           
+
         }
         public void stergere(int id)
         {
             this.products.RemoveAt(productId(id));
-            
+
         }
 
 

@@ -19,7 +19,7 @@ namespace Backend.Class
         }
 
 
-        public override string ToString() => this.id + "," + this.customer_id + "," + this.ammount + "," + this.order_address;
+        public string ToString() => this.id + "," + this.customer_id + "," + this.ammount + "," + this.order_address;
         public string afisare()
         {
             string afis = "";

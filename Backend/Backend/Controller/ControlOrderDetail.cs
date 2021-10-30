@@ -19,6 +19,7 @@ namespace Backend.Controller
 
         public void load()
         {
+            this.orderDetails.Clear();
             StreamReader fisier = new StreamReader(@"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\orderDetailFile.txt");
             string linie = "";
             while ((linie = fisier.ReadLine()) != null)
@@ -31,20 +32,11 @@ namespace Backend.Controller
         public void save()
         {
             StreamWriter fisier = new StreamWriter(@"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\orderDetailFile.txt");
-            fisier.WriteLine(this.ToString());
+            foreach (OrderDetail orderDetail in orderDetails)
+                fisier.WriteLine(orderDetail.ToString());
             fisier.Close();
         }
 
-
-        public override string ToString()
-        {
-            string text = "";
-            foreach (OrderDetail orderDetail in orderDetails)
-            {
-                text += orderDetail + "\n";
-            }
-            return text;
-        }
 
 
         public string afisare()
@@ -58,13 +50,10 @@ namespace Backend.Controller
         public void adaugare(OrderDetail orderDetail)
         {
             orderDetails.Add(orderDetail);
-            save();
         }
-
         public void stergere(int id)
         {
             this.orderDetails.RemoveAt(orderDetailId(id));
-            save();
         }
 
 
@@ -72,13 +61,10 @@ namespace Backend.Controller
         {
             orderDetails[orderDetailId(id)].Quantity = quantityNou;
         }
-        public void updatePrice(int id, int priceNou)
+        public void updatePrice(int id, double priceNou)
         {
             orderDetails[orderDetailId(id)].Price = priceNou;
         }
-
-
-
 
 
         public int orderDetailId(int id)

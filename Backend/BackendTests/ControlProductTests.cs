@@ -24,41 +24,29 @@ namespace BackendTests
         {
             //Preconditie
             ControlProduct control = new ControlProduct();
-            string[] p1 = new string[] { "phone", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" };
+            string[] p1 = new string[] { "phone", "11", "11", "11", "11", "11", "11", "11", "11", "11", "11", "11", "11" };
             Phone product1 = new Phone(p1);
-            string[] p2 = new string[] { "phone", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2" };
-            Phone product2 = new Phone(p2);
-            string[] p3 = new string[] { "phone", "3", "3", "3", "3", "3", "3", "3", "3", "3", "3", "3", "3" };
-            Phone product3 = new Phone(p3);
 
             //PostConditie
             control.adaugare(product1);
-            control.adaugare(product2);
-            control.adaugare(product3);
 
             //Actiune
             control.save();
             control.load();
 
             //Verificare
-            Assert.True(control.productId(1) >= 0);
-            Assert.True(control.productId(2) >= 0);
-            Assert.True(control.productId(3) >= 0);
+            Assert.True(control.productId(11) >= 0);
 
 
             //PostConditie
-            control.stergere(1);
-            control.stergere(2);
-            control.stergere(3);
+            control.stergere(11);
 
             //Actiune
             control.save();
             control.load();
 
             //Verificare
-            Assert.True(control.productId(1) < 0);
-            Assert.True(control.productId(2) < 0);
-            Assert.True(control.productId(3) < 0);
+            Assert.True(control.productId(11) < 0);
         }
 
         [Fact]

@@ -37,7 +37,6 @@ namespace Frontend
             //this.order = new Order(controlOrder.nextId(), customer.Id, 0, "bucrels street");
 
             //this.controlOrder.adaugare(order);
-
             timerCreate();
             layoutPanel();
             layouts();

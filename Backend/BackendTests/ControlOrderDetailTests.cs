@@ -24,29 +24,31 @@ namespace BackendTests
         {
             //Preconditie
             ControlOrderDetail control = new ControlOrderDetail();
-            string[] o1 = new string[] { "1", "1", "1", "1", "1"};
-            OrderDetail orderDetail1 = new OrderDetail(o1);
+            string[] o1 = new string[] {"11", "11", "11", "11", "11"};
+            OrderDetail order1 = new OrderDetail(o1);
+            
+            //PostConditie
+            control.adaugare(order1);
+
+            
+            ////Actiune
+            control.save();
+            control.load();
+            outputHelper.WriteLine(control.afisare());
+
+            //Verificare
+            Assert.True(control.orderDetailId(11) >= 0);
+
 
             //PostConditie
-            control.adaugare(orderDetail1);
+            control.stergere(11);
 
             //Actiune
             control.save();
             control.load();
 
             //Verificare
-            Assert.True(control.orderDetailId(1) >= 0);
-
-
-            //PostConditie
-            control.stergere(1);
-
-            //Actiune
-            control.save();
-            control.load();
-
-            //Verificare
-            Assert.True(control.orderDetailId(1) < 0);
+            Assert.True(control.orderDetailId(11) < 0);
         }
 
         [Fact]
@@ -63,7 +65,8 @@ namespace BackendTests
             control.stergere(1);
         }
 
-        public void update()
+        [Fact]
+        public void updatePrice()
         {
             ControlOrderDetail control = new ControlOrderDetail();
             string[] p1 = new string[] { "1", "1", "1", "1", "1" };

@@ -19,7 +19,8 @@ namespace Backend.Controller
 
         public void load()
         {
-            string path = @"D:\1_PROGRAMARE\C#\ONLINE_STORE\TEST.txt";
+            this.orders.Clear();
+            string path = @"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\orderFile.txt";
             StreamReader fisier = new StreamReader(path);
             string linie = "";
             while ((linie = fisier.ReadLine()) != null)
@@ -31,21 +32,12 @@ namespace Backend.Controller
         }
         public void save()
         {
-            string path = @"D:\1_PROGRAMARE\C#\ONLINE_STORE\TEST.txt";
+            string path = @"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\orderFile.txt";
             StreamWriter fisier = new StreamWriter(path);
-            fisier.WriteLine(this.ToString());
-            fisier.Close();
-        }
-
-
-        public override string ToString()
-        {
-            string text = "";
             foreach (Order order in orders)
-            {
-                text += order + "\n";
-            }
-            return text;
+
+                fisier.WriteLine(order.ToString());
+            fisier.Close();
         }
 
 
@@ -91,7 +83,13 @@ namespace Backend.Controller
             return -1;
         }
 
-
+        public Order orderObjectId(int id)
+        {
+            foreach (Order order in orders)
+                if (order.Id.Equals(id) == true)
+                    return order;
+            return null;
+        }
         public List<Order> Order
         {
             get => this.orders;

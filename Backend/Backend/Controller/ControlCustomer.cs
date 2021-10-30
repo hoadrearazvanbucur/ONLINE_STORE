@@ -19,11 +19,11 @@ namespace Backend.Controller
 
         public void load()
         {
-            string path = @"D:\1_PROGRAMARE\C#\ONLINE_STORE\TEST.txt";
+            this.customers.Clear();
+            string path = @"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\customerFile.txt";
             StreamReader fisier = new StreamReader(path);
             string linie = "";
-            while ((linie = fisier.ReadLine()) != null)
-            {
+            while ((linie = fisier.ReadLine()) != null){
                 string[] linieSplit = linie.Split(',');
                 customers.Add(new Customer(linieSplit));
             }
@@ -31,21 +31,11 @@ namespace Backend.Controller
         }
         public void save()
         {
-            string path = @"D:\1_PROGRAMARE\C#\ONLINE_STORE\TEST.txt";
+            string path = @"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\customerFile.txt";
             StreamWriter fisier = new StreamWriter(path);
-            fisier.WriteLine(this.ToString());
-            fisier.Close();
-        }
-
-
-        public override string ToString()
-        {
-            string text = "";
             foreach (Customer customer in customers)
-            {
-                text += customer + "\n";
-            }
-            return text;
+                fisier.WriteLine(customer.ToString());
+            fisier.Close();
         }
 
 
@@ -56,17 +46,13 @@ namespace Backend.Controller
                 afis += customer.afisare();
             return afis;
         }
-
         public void adaugare(Customer customer)
         {
-            customers.Add(customer);
-            save();
+            this.customers.Add(customer);
         }
-
         public void stergere(int id)
         {
             this.customers.RemoveAt(customerId(id));
-            save();
         }
 
 
@@ -84,9 +70,6 @@ namespace Backend.Controller
         }
 
 
-
-
-
         public int customerId(int id)
         {
             int k = 0;
@@ -95,14 +78,19 @@ namespace Backend.Controller
                 else k++;
             return -1;
         }
-
+        public Customer customerObjectId(int id)
+        {
+            foreach (Customer customer in customers)
+                if (customer.Id.Equals(id) == true)
+                    return customer;
+            return null;
+        }
 
         public List<Customer> Customers
         {
             get => this.customers;
             set => this.customers = value;
         }
-
 
         public int nextId()
         {

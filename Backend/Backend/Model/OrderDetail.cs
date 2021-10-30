@@ -20,7 +20,7 @@ namespace Backend.Class
         }
 
 
-        public override string ToString() => this.id + "," + this.order_id + "," + this.product_id + "," + this.quantity + "," + this.price;
+        public string ToString() => this.id + "," + this.order_id + "," + this.product_id + "," + this.quantity + "," + this.price;
         public string afisare()
         {
             string afis = "";
@@ -33,7 +33,7 @@ namespace Backend.Class
         }
 
 
-        public override bool Equals(object obj)
+        public bool Equals(object obj)
         {
             OrderDetail orderDetail = obj as OrderDetail;
             return true;

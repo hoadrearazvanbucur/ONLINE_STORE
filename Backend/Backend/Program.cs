@@ -1,4 +1,6 @@
-﻿using Backend.ControlClass;
+﻿using Backend.Class;
+using Backend.ControlClass;
+using Backend.Controller;
 using System;
 
 namespace Backend
