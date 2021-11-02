@@ -18,7 +18,6 @@ namespace BackendTests
             this.outputHelper = output;
         }
 
-
         [Fact]
         public void saveAdaugareStergere()
         {
@@ -30,14 +29,13 @@ namespace BackendTests
             //PostConditie
             control.adaugare(customer1);
 
-            ////Actiune
+            //Actiune
             control.save();
             control.load();
             outputHelper.WriteLine(control.afisare());
 
             //Verificare
             Assert.True(control.customerId(11) >= 0);
-
 
             //PostConditie
             control.stergere(11);
@@ -89,6 +87,5 @@ namespace BackendTests
 
             control.stergere(11);
         }
-
     }
 }

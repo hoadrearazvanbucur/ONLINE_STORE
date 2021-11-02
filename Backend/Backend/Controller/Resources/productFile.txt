@@ -1,3 +1,6 @@
-phone,1,1,1,1,1,1,1,1,1,1,1,1
-phone,2,2,2,2,2,2,2,2,2,2,2,2
-phone,3,3,3,3,3,3,3,3,3,3,3,3
+phone,1,1,1,D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Frontend\bin\Debug\netcoreapp3.1\Images\P_iphone12blue.png,1,1,1,1,1,1,1,1
+phone,2,2,2,D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Frontend\bin\Debug\netcoreapp3.1\Images\P_iphone13white.png,2,2,2,2,2,2,2,2
+phone,1,1,1,D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Frontend\bin\Debug\netcoreapp3.1\Images\P_iphone12blue.png,1,1,1,1,1,1,1,1
+phone,2,2,2,D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Frontend\bin\Debug\netcoreapp3.1\Images\P_iphone13white.png,2,2,2,2,2,2,2,2
+phone,1,1,1,D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Frontend\bin\Debug\netcoreapp3.1\Images\P_iphone12blue.png,1,1,1,1,1,1,1,1
+phone,2,2,2,D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Frontend\bin\Debug\netcoreapp3.1\Images\P_iphone13white.png,2,2,2,2,2,2,2,2

@@ -37,8 +37,10 @@ namespace Backend.ControlClass
         public void save()
         {
             StreamWriter fisier = new StreamWriter(@"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\productFile.txt");
-            foreach (Product product in products)
-                fisier.WriteLine((product as Phone).ToString());
+            foreach (Product product in products){
+                if(product is Phone)    fisier.WriteLine((product as Phone).ToString());
+                //celelalte categorii
+            }
             fisier.Close();
         }
 
@@ -49,23 +51,22 @@ namespace Backend.ControlClass
             foreach (Product product in products)
             {
                 afis += product.afisare();
-                if (product is Phone)
-                {
+                if (product is Phone){
                     Phone phone = product as Phone;
                     afis += phone.afisare();
                 }
+                //celelalte categorii
+
             }
             return afis;
         }
         public void adaugare(Product product)
         {
             this.products.Add(product);
-
         }
         public void stergere(int id)
         {
             this.products.RemoveAt(productId(id));
-
         }
 
 
@@ -128,7 +129,7 @@ namespace Backend.ControlClass
         }
 
 
-        public Product produsId(int id)
+        public Product productObjectID(int id)
         {
             foreach (Product produs in products)
                 if (produs.Id.Equals(id) == true)

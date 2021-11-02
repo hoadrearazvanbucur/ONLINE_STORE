@@ -7,10 +7,19 @@
     <Compile Update="ControlCard.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="ControlComanda.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="ControlCos.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="ControlHeader.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="ControlMain.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="ControlSumar.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="ViewHome.cs">

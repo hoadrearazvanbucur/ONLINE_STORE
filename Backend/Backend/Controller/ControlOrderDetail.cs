@@ -22,8 +22,7 @@ namespace Backend.Controller
             this.orderDetails.Clear();
             StreamReader fisier = new StreamReader(@"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\orderDetailFile.txt");
             string linie = "";
-            while ((linie = fisier.ReadLine()) != null)
-            {
+            while ((linie = fisier.ReadLine()) != null){
                 string[] linieSplit = linie.Split(',');
                 orderDetails.Add(new OrderDetail(linieSplit));
             }
@@ -38,7 +37,6 @@ namespace Backend.Controller
         }
 
 
-
         public string afisare()
         {
             string afis = "";
@@ -46,7 +44,6 @@ namespace Backend.Controller
                 afis += orderDetail.afisare();
             return afis;
         }
-
         public void adaugare(OrderDetail orderDetail)
         {
             orderDetails.Add(orderDetail);
@@ -66,7 +63,11 @@ namespace Backend.Controller
             orderDetails[orderDetailId(id)].Price = priceNou;
         }
 
-
+        public List<OrderDetail> OrderDetail
+        {
+            get => this.orderDetails;
+            set => this.orderDetails = value;
+        }
         public int orderDetailId(int id)
         {
             int k = 0;
@@ -82,11 +83,20 @@ namespace Backend.Controller
                     return orderDetail;
             return null;
         }
+        
 
-        public List<OrderDetail> OrderDetail
+
+
+        //orderId =>o lista cu toate detaliile ce au orderId introdus
+        public List<OrderDetail> orderListId(int orderId)
         {
-            get => this.orderDetails;
-            set => this.orderDetails = value;
+            List<OrderDetail> list = new List<OrderDetail>();
+            foreach(OrderDetail orderDetails in orderDetails)
+            {
+                if (orderDetails.Order_id.Equals(orderId) == true)
+                    list.Add(orderDetails);
+            }
+            return list;
         }
 
 

@@ -38,7 +38,6 @@ namespace BackendTests
             //Verificare
             Assert.True(control.orderId(11) >= 0);
 
-
             //PostConditie
             control.stergere(11);
 
@@ -63,7 +62,6 @@ namespace BackendTests
 
             control.stergere(11);
         }
-
         [Fact]
         public void updateAmmount()
         {
@@ -77,6 +75,5 @@ namespace BackendTests
 
             control.stergere(11);
         }
-
     }
 }

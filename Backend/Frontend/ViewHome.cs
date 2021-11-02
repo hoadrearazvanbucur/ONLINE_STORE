@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
+using Backend.Class;
 
 namespace Frontend
 {
     public class ViewHome : Form
-    {
+    { 
         private Panel header,buttonsBar,main;
 
         public ViewHome()
@@ -50,20 +51,29 @@ namespace Frontend
 
         public void layoutPanels()
         {
-            ControlHeader header = new ControlHeader();
+
+
+            Customer customer = new Customer(new string[] { "email", "password", "fullname", "1" });
+            Order order = new Order(new string[] { "1", $"{customer.Id}", "0", "Rasinari" });
+
+            ControlHeader header = new ControlHeader(this, order,customer);
             header.Location = new Point(13, 13);
             this.Controls.Add(header);
 
-            ControlButtonsBar bar = new ControlButtonsBar();
+            ControlButtonsBar bar = new ControlButtonsBar(this);
             bar.Location = new Point(0, 109);
             this.Controls.Add(bar);
 
-            ControlMain main = new ControlMain();
-            ////main.Location = new Point(13, 145);
-            //this.Controls.Add(main);
+            ControlMain main = new ControlMain(order, customer, this);
+            main.Name = "main";
+            main.Location = new Point(13, 145);
+            this.Controls.Add(main);
+
+
+
+
+
+
         }
-
-
-
     }
 }

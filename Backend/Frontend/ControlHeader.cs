@@ -3,13 +3,21 @@ using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
+using Backend.Class;
 
 namespace Frontend
 {
     public class ControlHeader : Panel
     {
-        public ControlHeader()
+        private Form form;
+        private Order order;
+        private Customer customer;
+
+        public ControlHeader(Form form,Order order,Customer customer)
         {
+            this.order = order;
+            this.form = form;
+            this.customer = customer;
             layoutPanel();
             layouts();
         }
@@ -72,7 +80,18 @@ namespace Frontend
         }
         public void logo_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Refresh");
+            Panel cos = null;
+            foreach (Control control in this.form.Controls)
+            {
+                if (control is Panel && control.Name.Equals("cos") == true)
+                    cos = control as Panel;
+            }
+            form.Controls.Remove(cos);
+
+            ControlMain main = new ControlMain(order, customer, this.form);
+            main.Name = "main";
+            main.Location = new Point(13, 145);
+            this.form.Controls.Add(main);
         }
 
 
@@ -128,10 +147,18 @@ namespace Frontend
         }
         public void cartPicture_Click(object sender, EventArgs e)
         {
+            Panel main = null;
+            foreach(Control control in this.form.Controls)
+            {
+                if (control is Panel && control.Name.Equals("main") == true)
+                    main = control as Panel;              
+            }
+            form.Controls.Remove(main);
 
-
-
-
+            ControlCos cos = new ControlCos(this.order,this.form);
+            cos.Name = "cos";
+            cos.Location = new Point(13, 145);
+            this.form.Controls.Add(cos);
         }
 
 

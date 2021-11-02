@@ -58,7 +58,7 @@ namespace BackendTests
             control.adaugare(product1);
 
             control.updateName(1, "TEST NUME");
-            Assert.Equal("TEST NUME", control.produsId(1).Name);
+            Assert.Equal("TEST NUME", control.productObjectID(1).Name);
 
             control.stergere(1);
         }
@@ -71,7 +71,7 @@ namespace BackendTests
             control.adaugare(product1);
 
             control.updateDescription(1, "TEST DESCRIERE");
-            Assert.Equal("TEST DESCRIERE", control.produsId(1).Description);
+            Assert.Equal("TEST DESCRIERE", control.productObjectID(1).Description);
 
             control.stergere(1);
         }
@@ -84,7 +84,7 @@ namespace BackendTests
             control.adaugare(product1);
 
             control.updateDate(1, "TEST DATA");
-            Assert.Equal("TEST DATA", control.produsId(1).Date);
+            Assert.Equal("TEST DATA", control.productObjectID(1).Date);
 
             control.stergere(1);
         }
@@ -97,7 +97,7 @@ namespace BackendTests
             control.adaugare(product1);
 
             control.updateImage(1, "TEST IMAGINE");
-            Assert.Equal("TEST IMAGINE", control.produsId(1).Image);
+            Assert.Equal("TEST IMAGINE", control.productObjectID(1).Image);
 
             control.stergere(1);
         }
@@ -110,7 +110,7 @@ namespace BackendTests
             control.adaugare(product1);
 
             control.updateStock(1, 123);
-            Assert.Equal(123, control.produsId(1).Stock);
+            Assert.Equal(123, control.productObjectID(1).Stock);
 
             control.stergere(1);
         }
@@ -123,7 +123,7 @@ namespace BackendTests
             control.adaugare(product1);
 
             control.updatePrice(1, 1234);
-            Assert.Equal(1234, control.produsId(1).Price);
+            Assert.Equal(1234, control.productObjectID(1).Price);
 
             control.stergere(1);
         }
@@ -136,7 +136,7 @@ namespace BackendTests
             control.adaugare(product1);
 
             control.updatePhoneName(1, "TEST Telefon Nume");
-            Assert.Equal("TEST Telefon Nume", (control.produsId(1) as Phone).PhoneName);
+            Assert.Equal("TEST Telefon Nume", (control.productObjectID(1) as Phone).PhoneName);
 
             control.stergere(1);
         }
@@ -149,7 +149,7 @@ namespace BackendTests
             control.adaugare(product1);
 
             control.updatePhoneColor(1, "TEST Culoare");
-            Assert.Equal("TEST Culoare", (control.produsId(1) as Phone).PhoneColor);
+            Assert.Equal("TEST Culoare", (control.productObjectID(1) as Phone).PhoneColor);
 
             control.stergere(1);
         }
@@ -162,7 +162,7 @@ namespace BackendTests
             control.adaugare(product1);
 
             control.updateScreenSize(1, 12345);
-            Assert.Equal(12345, (control.produsId(1) as Phone).ScreenSize);
+            Assert.Equal(12345, (control.productObjectID(1) as Phone).ScreenSize);
 
             control.stergere(1);
         }
@@ -175,7 +175,7 @@ namespace BackendTests
             control.adaugare(product1);
 
             control.updateStorage(1, 123456);
-            Assert.Equal(123456, (control.produsId(1) as Phone).Storage);
+            Assert.Equal(123456, (control.productObjectID(1) as Phone).Storage);
 
             control.stergere(1);
         }
@@ -188,11 +188,9 @@ namespace BackendTests
             control.adaugare(product1);
 
             control.updateBatteryCapacity(1, 1234567);
-            Assert.Equal(1234567, (control.produsId(1) as Phone).BatteryCapacity);
+            Assert.Equal(1234567, (control.productObjectID(1) as Phone).BatteryCapacity);
 
             control.stergere(1);
         }
-
-
     }
 }

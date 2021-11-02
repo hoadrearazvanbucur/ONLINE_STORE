@@ -150,7 +150,11 @@ namespace Frontend
             adaugaInCos.Location = new Point(-1, 330);
             adaugaInCos.Size = new Size(200, 40);
             adaugaInCos.Cursor = Cursors.Hand;
-
+            //adaugaInCos.Click += adaugaInCos_Click;
+        }
+        public void adaugaInCos_Click(object sender,EventArgs e)
+        {
+            MessageBox.Show(this.price.ToString());
         }
 
         public void produs_Click(object sender, EventArgs e)

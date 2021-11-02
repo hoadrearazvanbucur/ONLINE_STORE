@@ -8,8 +8,10 @@ namespace Frontend
 {
     public class ControlButtonsBar : Panel
     {
-        public ControlButtonsBar()
+        private Form form;
+        public ControlButtonsBar(Form form)
         {
+            this.form = form;
             layoutPanel();
             layouts();
         }

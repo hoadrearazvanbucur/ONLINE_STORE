@@ -23,8 +23,7 @@ namespace Backend.Controller
             string path = @"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\orderFile.txt";
             StreamReader fisier = new StreamReader(path);
             string linie = "";
-            while ((linie = fisier.ReadLine()) != null)
-            {
+            while ((linie = fisier.ReadLine()) != null){
                 string[] linieSplit = linie.Split(',');
                 orders.Add(new Order(linieSplit));
             }
@@ -35,7 +34,6 @@ namespace Backend.Controller
             string path = @"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\orderFile.txt";
             StreamWriter fisier = new StreamWriter(path);
             foreach (Order order in orders)
-
                 fisier.WriteLine(order.ToString());
             fisier.Close();
         }
@@ -48,17 +46,13 @@ namespace Backend.Controller
                 afis += order.afisare();
             return afis;
         }
-
         public void adaugare(Order order)
         {
             orders.Add(order);
-            save();
         }
-
         public void stergere(int id)
         {
             this.orders.RemoveAt(orderId(id));
-            save();
         }
 
 
@@ -72,8 +66,6 @@ namespace Backend.Controller
         }
 
 
-
-
         public int orderId(int id)
         {
             int k = 0;
@@ -82,7 +74,6 @@ namespace Backend.Controller
                 else k++;
             return -1;
         }
-
         public Order orderObjectId(int id)
         {
             foreach (Order order in orders)
@@ -95,7 +86,6 @@ namespace Backend.Controller
             get => this.orders;
             set => this.orders = value;
         }
-
 
         public int nextId()
         {

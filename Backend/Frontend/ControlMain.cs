@@ -16,31 +16,36 @@ namespace Frontend
         private ControlOrder controlOrder;
         private ControlOrderDetail controlOrderDetail;
         private ControlCustomer controlCustomer;
+
         private Customer customer;
         private Order order;
-
+        private Form form;
 
         private int timer;
         private PictureBox reclame;
 
 
-        public ControlMain()
+        public ControlMain(Order order ,Customer customer,Form form)
         {
+            this.form = form;
+
             this.timer = 0;
             this.reclame = new PictureBox();
+
             this.controlProducts = new ControlProduct();
             this.controlOrder = new ControlOrder();
             this.controlOrderDetail = new ControlOrderDetail();
             this.controlCustomer = new ControlCustomer();
 
-            //this.customer = new Customer(1, "", "", "Bucurel");
-            //this.order = new Order(controlOrder.nextId(), customer.Id, 0, "bucrels street");
+            this.customer = customer;
+            this.order = order;
 
-            //this.controlOrder.adaugare(order);
             timerCreate();
             layoutPanel();
             layouts();
             layoutProduse();
+
+
 
 
             Label TEST = new Label();
@@ -112,21 +117,12 @@ namespace Frontend
         {
             Button button = sender as Button;
             int id = int.Parse(button.Name.Split(",")[1]);
-            Product p = controlProducts.produsId(id);
-            controlProducts.updateStock(id,p.Stock);
-
-            //controlOrderDetail.nextId(), order.Id, p.Id, p.Price, 1
-
-            string []text = new string[100];
-            text[0] = controlOrderDetail.nextId().ToString();
-            text[1] = order.Id.ToString();
-            text[2] = p.Id.ToString();
-            text[3] = p.Price.ToString();
-            text[4] = "1";
-
-            OrderDetail orderDetails = new OrderDetail(text);
-            controlOrderDetail.adaugare(orderDetails);
-            controlOrderDetail.save();
+            OrderDetail orderDetail = new OrderDetail(new string[] { $"{controlOrderDetail.nextId()}", $"{this.order.Id}", $"{id}", "1", $"{this.controlProducts.productObjectID(id).Price}" });
+            this.controlOrderDetail.adaugare(orderDetail);
+            this.controlOrderDetail.save();
+            this.controlOrderDetail.load();
+         
+      
         }
 
 
