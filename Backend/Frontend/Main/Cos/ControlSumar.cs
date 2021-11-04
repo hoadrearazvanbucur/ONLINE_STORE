@@ -3,15 +3,27 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
+using Backend.Class;
+using Backend.Controller;
 
 namespace Frontend
 {
     public class ControlSumar : Panel
     {
-        private int price;
-        public ControlSumar(int price)
+        private ControlOrder controlOrder;
+        private Order order;
+        private Customer customer;
+        private Form form;
+        private double price;
+        private int nr;
+        public ControlSumar(double price,int nr, Order order,Form form,Customer customer)
         {
+            controlOrder = new ControlOrder();
+            this.order = order;
+            this.form = form;
+            this.customer = customer;
             this.price = price;
+            this.nr = nr;
             layoutPanel();
             layouts();
         }
@@ -120,7 +132,22 @@ namespace Frontend
 
         public void comanda_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Comanda");
+            this.order.Ammount =this.nr;
+            controlOrder.adaugare(order);
+            controlOrder.save();
+            MessageBox.Show("Comanda a fost trimisa cu succes!");
+            Panel cos = null;
+            foreach (Control control in this.form.Controls)
+            {
+                if (control is Panel && control.Name.Equals("cos") == true)
+                    cos = control as Panel;
+            }
+            this.form.Controls.Remove(cos);
+
+            ControlMain main = new ControlMain(this.order, this.customer, this.form);
+            main.Name = "main";
+            main.Location = new Point(13, 145);
+            this.form.Controls.Add(main);
         }
     }
 }

@@ -14,12 +14,14 @@ namespace Frontend
     {
         private ControlOrderDetail controlOrderDetails;
         private ControlProduct controlProduct;
+        private Customer customer;
         private Order order;
         private Form form;
 
-        public ControlCos(Order order,Form form)
+        public ControlCos(Order order,Form form,Customer customer)
         {
             this.controlOrderDetails = new ControlOrderDetail();
+            this.customer = customer;
             this.controlProduct = new ControlProduct();
             this.order = order;
             this.form = form;
@@ -43,18 +45,21 @@ namespace Frontend
         {
             List<OrderDetail> orders = controlOrderDetails.orderListId(order.Id);
 
-            int k1 = 40;
+            int k1 = 40,nr=0;
+            double s=0;
 
             foreach (OrderDetail d in orders)
             {
                 ControlComanda card = new ControlComanda(controlProduct.productObjectID(d.Product_id).Name, controlProduct.productObjectID(d.Product_id).Image, controlProduct.productObjectID(d.Product_id).Price, (controlProduct.productObjectID(d.Product_id) as Phone).PhoneName, controlProduct.productObjectID(d.Product_id).Stock);
                 card.Location = new Point(75, 50 + k1);
                 k1 += 200;
+                nr++;
+                s += controlProduct.productObjectID(d.Product_id).Price;
                 this.Controls.Add(card);
             }
 
 
-            ControlSumar sumar = new ControlSumar(4121);
+            ControlSumar sumar = new ControlSumar(s,nr,order,this.form,this.customer);
             sumar.Location = new Point(800, 90);
             this.Controls.Add(sumar);
         }

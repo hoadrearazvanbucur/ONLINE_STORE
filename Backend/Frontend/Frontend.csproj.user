@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="ControlButtonsBar.cs">
+    <Compile Update="ButtonsBar\ControlButtonsBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="ControlCard.cs">
+    <Compile Update="Main\Card\ControlCard.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="ControlComanda.cs">
+    <Compile Update="Main\Cos\ControlComanda.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="ControlCos.cs">
+    <Compile Update="Main\Cos\ControlCos.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="ControlHeader.cs">
+    <Compile Update="Header\ControlHeader.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="ControlMain.cs">
+    <Compile Update="Main\Card\ControlMain.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="ControlSumar.cs">
+    <Compile Update="Main\Cos\ControlSumar.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="ViewHome.cs">

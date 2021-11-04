@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 using Backend.Class;
+using Backend.Controller;
 
 namespace Frontend
 {
@@ -51,7 +52,8 @@ namespace Frontend
 
         public void layoutPanels()
         {
-
+            ControlCustomer controlCustomer = new ControlCustomer();
+            ControlOrder controlOrder = new ControlOrder();
 
             Customer customer = new Customer(new string[] { "email", "password", "fullname", "1" });
             Order order = new Order(new string[] { "1", $"{customer.Id}", "0", "Rasinari" });

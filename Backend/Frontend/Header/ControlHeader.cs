@@ -155,7 +155,7 @@ namespace Frontend
             }
             form.Controls.Remove(main);
 
-            ControlCos cos = new ControlCos(this.order,this.form);
+            ControlCos cos = new ControlCos(this.order,this.form,this.customer);
             cos.Name = "cos";
             cos.Location = new Point(13, 145);
             this.form.Controls.Add(cos);
