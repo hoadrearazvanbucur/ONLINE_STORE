@@ -24,8 +24,9 @@ namespace Frontend
         private int timer;
         private PictureBox reclame;
 
+        private int buttonsBar;
 
-        public ControlMain(Order order ,Customer customer,Form form)
+        public ControlMain(Order order ,Customer customer,Form form,int buttonsBar)
         {
             this.form = form;
 
@@ -40,10 +41,17 @@ namespace Frontend
             this.customer = customer;
             this.order = order;
 
+            this.buttonsBar = buttonsBar;
+
             timerCreate();
             layoutPanel();
             layouts();
-            layoutProduse();
+            if (this.buttonsBar == 1)
+                layoutProduse();
+            if (this.buttonsBar == 2)
+                layoutOferte();
+            if (this.buttonsBar == 3)
+                layoutBranduri();
 
 
 
@@ -113,6 +121,65 @@ namespace Frontend
         }
 
 
+        public void layoutOferte()
+        {
+            List<Product> lista = controlProducts.afisareCard;
+            int k1 = 1, k2 = 0;
+
+            foreach (Product produs in lista)
+            {
+                if (produs.Price == 1)
+                {
+                    ControlCard card = new ControlCard(produs.Id, produs.Name, produs.Image, produs.Price, produs.Stock, (produs as Phone).PhoneName);
+                    if (k2 > 900)
+                    {
+                        k2 = 0;
+                        k1 += 450;
+                    }
+                    card.Location = new Point(75 + k2, 420 + k1);
+
+                    Button b = null;
+                    foreach (Control controale in card.Controls)
+                        if (controale is Button)
+                        {
+                            Button cos = controale as Button;
+                            if (cos.Name.Contains("cos") == true)
+                                b = cos;
+                        }
+                    b.Click += addCos_Click;
+                    k2 += 267;
+                    this.Controls.Add(card);
+                }
+            }
+        }
+        public void layoutBranduri()
+        {
+            List<Product> lista = controlProducts.afisareCard;
+            int k1 = 1, k2 = 0;
+
+            foreach (Product produs in lista)
+            {
+                ControlCard card = new ControlCard(produs.Id, produs.Name, produs.Image, produs.Price, produs.Stock, (produs as Phone).PhoneName);
+                if (k2 > 900)
+                {
+                    k2 = 0;
+                    k1 += 450;
+                }
+                card.Location = new Point(75 + k2, 420 + k1);
+
+                Button b = null;
+                foreach (Control controale in card.Controls)
+                    if (controale is Button)
+                    {
+                        Button cos = controale as Button;
+                        if (cos.Name.Contains("cos") == true)
+                            b = cos;
+                    }
+                b.Click += addCos_Click;
+                k2 += 267;
+                this.Controls.Add(card);
+            }
+        }
         public void addCos_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
@@ -124,8 +191,6 @@ namespace Frontend
          
       
         }
-
-
 
         public void layoutReclame()
         {

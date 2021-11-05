@@ -144,7 +144,7 @@ namespace Frontend
             }
             this.form.Controls.Remove(cos);
 
-            ControlMain main = new ControlMain(this.order, this.customer, this.form);
+            ControlMain main = new ControlMain(this.order, this.customer, this.form,1);
             main.Name = "main";
             main.Location = new Point(13, 145);
             this.form.Controls.Add(main);

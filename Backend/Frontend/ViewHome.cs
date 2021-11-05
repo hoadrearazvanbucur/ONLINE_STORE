@@ -62,11 +62,11 @@ namespace Frontend
             header.Location = new Point(13, 13);
             this.Controls.Add(header);
 
-            ControlButtonsBar bar = new ControlButtonsBar(this);
+            ControlButtonsBar bar = new ControlButtonsBar(this,order,customer);
             bar.Location = new Point(0, 109);
             this.Controls.Add(bar);
 
-            ControlMain main = new ControlMain(order, customer, this);
+            ControlMain main = new ControlMain(order, customer, this,1);
             main.Name = "main";
             main.Location = new Point(13, 145);
             this.Controls.Add(main);

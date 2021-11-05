@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
+using Backend.Class;
 
 namespace Frontend
 {
     public class ControlButtonsBar : Panel
     {
         private Form form;
-        public ControlButtonsBar(Form form)
+        private Order order;
+        private Customer customer;
+        public ControlButtonsBar(Form form,Order order,Customer customer)
         {
             this.form = form;
+            this.order = order;
+            this.customer = customer;
             layoutPanel();
             layouts();
         }
@@ -70,7 +75,18 @@ namespace Frontend
         }
         public void produse_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Produse");
+            Panel cos = null;
+            foreach (Control control in this.form.Controls)
+            {
+                if (control is Panel &&( control.Name.Equals("cos") == true|| control.Name.Equals("main") == true))
+                    cos = control as Panel;
+            }
+            form.Controls.Remove(cos);
+
+            ControlMain main = new ControlMain(order, customer, this.form,1);
+            main.Name = "main";
+            main.Location = new Point(13, 145);
+            this.form.Controls.Add(main);
         }
 
 
@@ -88,7 +104,18 @@ namespace Frontend
         }
         public void promotii_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Promotii");
+            Panel cos = null;
+            foreach (Control control in this.form.Controls)
+            {
+                if (control is Panel && (control.Name.Equals("cos") == true || control.Name.Equals("main") == true))
+                    cos = control as Panel;
+            }
+            form.Controls.Remove(cos);
+
+            ControlMain main = new ControlMain(order, customer, this.form,2);
+            main.Name = "main";
+            main.Location = new Point(13, 145);
+            this.form.Controls.Add(main);
         }
 
 
