@@ -55,7 +55,7 @@ namespace Frontend
             ControlCustomer controlCustomer = new ControlCustomer();
             ControlOrder controlOrder = new ControlOrder();
 
-            Customer customer = new Customer(new string[] { "email", "password", "fullname", "1" });
+            Customer customer = new Customer(new string[] { "email", "password", "Razvan", "1" });
             Order order = new Order(new string[] { "1", $"{customer.Id}", "0", "Rasinari" });
 
             ControlHeader header = new ControlHeader(this, order,customer);
@@ -66,7 +66,7 @@ namespace Frontend
             bar.Location = new Point(0, 109);
             this.Controls.Add(bar);
 
-            ControlMain main = new ControlMain(order, customer, this,1);
+            ControlMain main = new ControlMain(order, customer, this,1, "");
             main.Name = "main";
             main.Location = new Point(13, 145);
             this.Controls.Add(main);

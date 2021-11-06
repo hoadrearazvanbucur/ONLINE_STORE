@@ -83,7 +83,7 @@ namespace Frontend
             }
             form.Controls.Remove(cos);
 
-            ControlMain main = new ControlMain(order, customer, this.form,1);
+            ControlMain main = new ControlMain(order, customer, this.form,1,"");
             main.Name = "main";
             main.Location = new Point(13, 145);
             this.form.Controls.Add(main);
@@ -112,7 +112,7 @@ namespace Frontend
             }
             form.Controls.Remove(cos);
 
-            ControlMain main = new ControlMain(order, customer, this.form,2);
+            ControlMain main = new ControlMain(order, customer, this.form,2, "");
             main.Name = "main";
             main.Location = new Point(13, 145);
             this.form.Controls.Add(main);
@@ -133,7 +133,18 @@ namespace Frontend
         }
         public void branduri_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Branduri");
+            Panel cos = null;
+            foreach (Control control in this.form.Controls)
+            {
+                if (control is Panel && (control.Name.Equals("cos") == true || control.Name.Equals("main") == true))
+                    cos = control as Panel;
+            }
+            form.Controls.Remove(cos);
+
+            ControlMain main = new ControlMain(order, customer, this.form, 3, "");
+            main.Name = "main";
+            main.Location = new Point(13, 145);
+            this.form.Controls.Add(main);
         }
 
 
@@ -151,7 +162,18 @@ namespace Frontend
         }
         public void suportClienti_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Suport Clienti");
+            Panel cos = null;
+            foreach (Control control in this.form.Controls)
+            {
+                if (control is Panel && (control.Name.Equals("cos") == true || control.Name.Equals("main") == true))
+                    cos = control as Panel;
+            }
+            form.Controls.Remove(cos);
+
+            ControlMain main = new ControlMain(order, customer, this.form, 4, "");
+            main.Name = "main";
+            main.Location = new Point(13, 145);
+            this.form.Controls.Add(main);
         }
     }
 }

@@ -53,6 +53,7 @@ namespace Frontend
 
             Panel search = new Panel();
             layoutSearch(search);
+            search.Name = "search";
             this.Controls.Add(search);
 
             TextBox searchText = new TextBox();
@@ -88,7 +89,7 @@ namespace Frontend
             }
             form.Controls.Remove(cos);
 
-            ControlMain main = new ControlMain(order, customer, this.form,1);
+            ControlMain main = new ControlMain(order, customer, this.form,1, "");
             main.Name = "main";
             main.Location = new Point(13, 145);
             this.form.Controls.Add(main);
@@ -109,17 +110,17 @@ namespace Frontend
         {
             userLabel.AutoSize = false;
             userLabel.Location = new Point(895, 25);
-            userLabel.Size = new Size(50, 30);
+            userLabel.Size = new Size(100, 30);
             userLabel.Cursor = Cursors.Hand;
             userLabel.Click += new EventHandler(userPicture_Click);
             userLabel.Font = new Font("Cambria", 13, FontStyle.Regular);
             userLabel.BackColor = SystemColors.ControlLightLight;
-            userLabel.Text = "Cont";
+            userLabel.Text = customer.FullName;
             userLabel.TextAlign = ContentAlignment.MiddleLeft;
         }
         public void userPicture_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Cont");
+            //MessageBox.Show("Cont");
         }
 
 
@@ -184,11 +185,12 @@ namespace Frontend
             searchText.Font = new Font("Cambria", 14, FontStyle.Regular);
             searchText.ForeColor = SystemColors.WindowText;
             searchText.Text = "";
+            searchText.Name = "textBox";
             searchText.Location = new Point(10, 13);
             searchText.Size = new Size(417, 23);
             searchText.BorderStyle = BorderStyle.None;
             searchText.BackColor = SystemColors.ControlLightLight;
-            searchText.TextChanged += new EventHandler(search_TextChanged);
+            //searchText.TextChanged += new EventHandler(search_TextChanged);
         }
         public void search_TextChanged(object sender, EventArgs e)
         {
@@ -196,7 +198,28 @@ namespace Frontend
         }
         public void search_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Cautare");
+            Panel cos = null;
+            Panel search = null;
+            foreach (Control control in this.form.Controls)
+            {
+                if (control is Panel && (control.Name.Equals("cos") == true || control.Name.Equals("main") == true))
+                    cos = control as Panel;
+                if (control is Panel && (control as Panel).Name.Equals("search") == true)
+                    search = control as Panel;
+
+
+            }
+            TextBox textBox = null;
+            foreach (Control control in search.Controls)
+                if (control is Panel && control.Name.Equals("textBox") == true)
+                    textBox = control as TextBox;
+
+            form.Controls.Remove(cos);
+            MessageBox.Show(textBox.Text);
+            ControlMain main = new ControlMain(order, customer, this.form, 5, "textBox.Text");
+            main.Name = "main";
+            main.Location = new Point(13, 145);
+            this.form.Controls.Add(main);
         }
 
 

@@ -25,8 +25,9 @@ namespace Frontend
         private PictureBox reclame;
 
         private int buttonsBar;
+        private string search;
 
-        public ControlMain(Order order ,Customer customer,Form form,int buttonsBar)
+        public ControlMain(Order order ,Customer customer,Form form,int buttonsBar,string search)
         {
             this.form = form;
 
@@ -42,6 +43,7 @@ namespace Frontend
             this.order = order;
 
             this.buttonsBar = buttonsBar;
+            this.search = search;
 
             timerCreate();
             layoutPanel();
@@ -49,9 +51,14 @@ namespace Frontend
             if (this.buttonsBar == 1)
                 layoutProduse();
             if (this.buttonsBar == 2)
-                layoutOferte();
+                layoutPromotii();
             if (this.buttonsBar == 3)
                 layoutBranduri();
+            if (this.buttonsBar == 4)
+                layoutSuportClienti();
+            if (this.buttonsBar == 5)
+                layoutSearch();
+
 
 
 
@@ -119,9 +126,7 @@ namespace Frontend
                 this.Controls.Add(card);
             }
         }
-
-
-        public void layoutOferte()
+        public void layoutPromotii()
         {
             List<Product> lista = controlProducts.afisareCard;
             int k1 = 1, k2 = 0;
@@ -154,32 +159,76 @@ namespace Frontend
         }
         public void layoutBranduri()
         {
+            Panel main = null;
+            foreach (Control control in this.form.Controls)
+            {
+                if (control is Panel && control.Name.Equals("main") == true)
+                    main = control as Panel;
+            }
+            Label iphone = new Label();
+            iphone.AutoSize = false;
+            iphone.Location = new Point(895, 25);
+            iphone.Size = new Size(100, 30);
+            iphone.Cursor = Cursors.Hand;
+            iphone.Font = new Font("Cambria", 13, FontStyle.Regular);
+            iphone.BackColor = SystemColors.ControlLightLight;
+            iphone.Text = "Apple";
+            iphone.TextAlign = ContentAlignment.MiddleLeft;
+            main.Controls.Add(iphone);
+        }
+        public void layoutSuportClienti()
+        {
+            Panel main = null;
+            foreach (Control control in this.form.Controls)
+            {
+                if (control is Panel && control.Name.Equals("main") == true)
+                    main = control as Panel;
+            }
+            Label iphone = new Label();
+            iphone.AutoSize = false;
+            iphone.Location = new Point(895, 25);
+            iphone.Size = new Size(100, 30);
+            iphone.Cursor = Cursors.Hand;
+            iphone.Font = new Font("Cambria", 13, FontStyle.Regular);
+            iphone.BackColor = SystemColors.ControlLightLight;
+            iphone.Text = "Contacteaza-ne la urmatorul numar de telefon daca intampinati probleme:\n 0712345678";
+            iphone.TextAlign = ContentAlignment.MiddleLeft;
+            main.Controls.Add(iphone);
+        }
+        public void layoutSearch()
+        {
             List<Product> lista = controlProducts.afisareCard;
             int k1 = 1, k2 = 0;
 
             foreach (Product produs in lista)
             {
-                ControlCard card = new ControlCard(produs.Id, produs.Name, produs.Image, produs.Price, produs.Stock, (produs as Phone).PhoneName);
-                if (k2 > 900)
+                if (produs.Name == this.search)
                 {
-                    k2 = 0;
-                    k1 += 450;
-                }
-                card.Location = new Point(75 + k2, 420 + k1);
-
-                Button b = null;
-                foreach (Control controale in card.Controls)
-                    if (controale is Button)
+                    ControlCard card = new ControlCard(produs.Id, produs.Name, produs.Image, produs.Price, produs.Stock, (produs as Phone).PhoneName);
+                    if (k2 > 900)
                     {
-                        Button cos = controale as Button;
-                        if (cos.Name.Contains("cos") == true)
-                            b = cos;
+                        k2 = 0;
+                        k1 += 450;
                     }
-                b.Click += addCos_Click;
-                k2 += 267;
-                this.Controls.Add(card);
+                    card.Location = new Point(75 + k2, 420 + k1);
+
+                    Button b = null;
+                    foreach (Control controale in card.Controls)
+                        if (controale is Button)
+                        {
+                            Button cos = controale as Button;
+                            if (cos.Name.Contains("cos") == true)
+                                b = cos;
+                        }
+                    b.Click += addCos_Click;
+                    k2 += 267;
+                    this.Controls.Add(card);
+                }
             }
         }
+
+
+
         public void addCos_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
@@ -225,10 +274,17 @@ namespace Frontend
         {
             oferte.AutoSize = false;
             oferte.Location = new Point(15, 288);
-            oferte.Size = new Size(150, 30);
+            oferte.Size = new Size(300, 30);
             oferte.Font = new Font("Cambria", 16, FontStyle.Regular);
             oferte.BackColor = SystemColors.ControlLightLight;
-            oferte.Text = "Ofertele zilei:";
+            if (this.buttonsBar == 1 || this.buttonsBar == 5)
+                oferte.Text = "Ofertele zilei:";
+            if (this.buttonsBar == 2)
+                oferte.Text = "Promotiile zilei:";
+            if (this.buttonsBar == 3)
+                oferte.Text = "Branduri:";
+            if (this.buttonsBar == 4)
+                oferte.Text = "Suport Clienti:";
         }
     }
 }
