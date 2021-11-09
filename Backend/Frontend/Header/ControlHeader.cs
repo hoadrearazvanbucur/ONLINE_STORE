@@ -58,6 +58,7 @@ namespace Frontend
 
             TextBox searchText = new TextBox();
             layoutSearchText(searchText);
+            searchText.Name = "text";
             search.Controls.Add(searchText);
 
             PictureBox searchPicture = new PictureBox();
@@ -185,12 +186,11 @@ namespace Frontend
             searchText.Font = new Font("Cambria", 14, FontStyle.Regular);
             searchText.ForeColor = SystemColors.WindowText;
             searchText.Text = "";
-            searchText.Name = "textBox";
             searchText.Location = new Point(10, 13);
             searchText.Size = new Size(417, 23);
             searchText.BorderStyle = BorderStyle.None;
             searchText.BackColor = SystemColors.ControlLightLight;
-            //searchText.TextChanged += new EventHandler(search_TextChanged);
+            searchText.TextChanged += new EventHandler(search_TextChanged);
         }
         public void search_TextChanged(object sender, EventArgs e)
         {
@@ -204,19 +204,18 @@ namespace Frontend
             {
                 if (control is Panel && (control.Name.Equals("cos") == true || control.Name.Equals("main") == true))
                     cos = control as Panel;
+            }
+            foreach (Control control in this.Controls)
                 if (control is Panel && (control as Panel).Name.Equals("search") == true)
                     search = control as Panel;
 
-
-            }
             TextBox textBox = null;
             foreach (Control control in search.Controls)
-                if (control is Panel && control.Name.Equals("textBox") == true)
+                if (control is TextBox && control.Name.Equals("text") == true)
                     textBox = control as TextBox;
 
             form.Controls.Remove(cos);
-            MessageBox.Show(textBox.Text);
-            ControlMain main = new ControlMain(order, customer, this.form, 5, "textBox.Text");
+            ControlMain main = new ControlMain(order, customer, this.form, 5, textBox.Text);
             main.Name = "main";
             main.Location = new Point(13, 145);
             this.form.Controls.Add(main);

@@ -159,41 +159,39 @@ namespace Frontend
         }
         public void layoutBranduri()
         {
-            Panel main = null;
-            foreach (Control control in this.form.Controls)
-            {
-                if (control is Panel && control.Name.Equals("main") == true)
-                    main = control as Panel;
-            }
             Label iphone = new Label();
             iphone.AutoSize = false;
-            iphone.Location = new Point(895, 25);
-            iphone.Size = new Size(100, 30);
+            iphone.Location = new Point(300, 400);
+            iphone.Size = new Size(200, 50);
             iphone.Cursor = Cursors.Hand;
-            iphone.Font = new Font("Cambria", 13, FontStyle.Regular);
+            iphone.Font = new Font("Cambria", 25, FontStyle.Regular);
             iphone.BackColor = SystemColors.ControlLightLight;
             iphone.Text = "Apple";
             iphone.TextAlign = ContentAlignment.MiddleLeft;
-            main.Controls.Add(iphone);
+            this.Controls.Add(iphone);
+            Label samsung = new Label();
+            samsung.AutoSize = false;
+            samsung.Location = new Point(650, 400);
+            samsung.Size = new Size(200, 50);
+            samsung.Cursor = Cursors.Hand;
+            samsung.Font = new Font("Cambria", 25, FontStyle.Regular);
+            samsung.BackColor = SystemColors.ControlLightLight;
+            samsung.Text = "Samsung";
+            samsung.TextAlign = ContentAlignment.MiddleLeft;
+            this.Controls.Add(samsung);
         }
         public void layoutSuportClienti()
         {
-            Panel main = null;
-            foreach (Control control in this.form.Controls)
-            {
-                if (control is Panel && control.Name.Equals("main") == true)
-                    main = control as Panel;
-            }
             Label iphone = new Label();
             iphone.AutoSize = false;
-            iphone.Location = new Point(895, 25);
-            iphone.Size = new Size(100, 30);
+            iphone.Location = new Point(300,400);
+            iphone.Size = new Size(1000, 100);
             iphone.Cursor = Cursors.Hand;
             iphone.Font = new Font("Cambria", 13, FontStyle.Regular);
             iphone.BackColor = SystemColors.ControlLightLight;
-            iphone.Text = "Contacteaza-ne la urmatorul numar de telefon daca intampinati probleme:\n 0712345678";
+            iphone.Text = "Contacteaza-ne la urmatorul numar de telefon daca intampinati probleme:\n                                                            0712345678";
             iphone.TextAlign = ContentAlignment.MiddleLeft;
-            main.Controls.Add(iphone);
+            this.Controls.Add(iphone);
         }
         public void layoutSearch()
         {
