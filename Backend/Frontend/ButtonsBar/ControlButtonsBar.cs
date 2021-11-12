@@ -175,5 +175,63 @@ namespace Frontend
             main.Location = new Point(13, 145);
             this.form.Controls.Add(main);
         }
+
+        // 
+        public void layoutBranduri(Button branduri)
+        {
+            branduri.Text = "Branduri";
+            branduri.Font = new Font("Cambria", 16, FontStyle.Bold);
+            branduri.FlatStyle = FlatStyle.Popup;
+            branduri.BackColor = Color.Brown;
+            branduri.Cursor = Cursors.Hand;
+            branduri.ForeColor = SystemColors.ControlLightLight;
+            branduri.Location = new Point(402, 0);
+            branduri.Size = new Size(150, 40);
+            branduri.Click += new EventHandler(branduri_Click);
+        }
+        public void branduri_Click(object sender, EventArgs e)
+        {
+            Panel cos = null;
+            foreach (Control control in this.form.Controls)
+            {
+                if (control is Panel && (control.Name.Equals("cos") == true || control.Name.Equals("main") == true))
+                    cos = control as Panel;
+            }
+            form.Controls.Remove(cos);
+
+            ControlMain main = new ControlMain(order, customer, this.form, 3, "");
+            main.Name = "main";
+            main.Location = new Point(13, 145);
+            this.form.Controls.Add(main);
+        }
+
+
+        public void layoutSuportClienti(Button suportClienti)
+        {
+            suportClienti.Text = "Suport Clienti";
+            suportClienti.Font = new Font("Cambria", 16, FontStyle.Bold);
+            suportClienti.FlatStyle = FlatStyle.Popup;
+            suportClienti.Cursor = Cursors.Hand;
+            suportClienti.BackColor = Color.Brown;
+            suportClienti.ForeColor = SystemColors.ControlLightLight;
+            suportClienti.Location = new Point(558, 0);
+            suportClienti.Size = new Size(167, 40);
+            suportClienti.Click += new EventHandler(suportClienti_Click);
+        }
+        public void suportClienti_Click(object sender, EventArgs e)
+        {
+            Panel cos = null;
+            foreach (Control control in this.form.Controls)
+            {
+                if (control is Panel && (control.Name.Equals("cos") == true || control.Name.Equals("main") == true))
+                    cos = control as Panel;
+            }
+            form.Controls.Remove(cos);
+
+            ControlMain main = new ControlMain(order, customer, this.form, 4, "");
+            main.Name = "main";
+            main.Location = new Point(13, 145);
+            this.form.Controls.Add(main);
+        }
     }
 }
