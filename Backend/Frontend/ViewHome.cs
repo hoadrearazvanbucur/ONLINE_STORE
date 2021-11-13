@@ -42,39 +42,24 @@ namespace Frontend
         public void layoutForm()
         {
             this.Name = "form";
-            this.Size = new Size(1200, 700);
-            this.MaximumSize = new Size(1200, 700);
-            this.MinimumSize = new Size(1200, 700);
-            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Size = new Size(400, 500);
+            this.MaximumSize = new Size(400, 500);
+            this.MinimumSize = new Size(400, 500);
+            this.StartPosition = FormStartPosition.Manual;
+            this.Left = Screen.PrimaryScreen.Bounds.Width/2-200;
+            this.Top = Screen.PrimaryScreen.Bounds.Height/2-250;
             this.FormBorderStyle = FormBorderStyle.None;
             this.BackColor = SystemColors.ControlLightLight;
         }
 
         public void layoutPanels()
         {
-            ControlCustomer controlCustomer = new ControlCustomer();
-            ControlOrder controlOrder = new ControlOrder();
+            //Customer customer = new Customer(new string[] { "email", "password", "Razvan", "1" });
+            //Customer customer = new Customer(new string[] { "", "", "", "" });
+            //Order order = new Order(new string[] { "1", $"{customer.Id}", "0", "Rasinari" });
+            //Order order = new Order(new string[] { "", "", "", "" });
 
-            Customer customer = new Customer(new string[] { "email", "password", "Razvan", "1" });
-            Order order = new Order(new string[] { "1", $"{customer.Id}", "0", "Rasinari" });
-
-            ControlHeader header = new ControlHeader(this, order,customer);
-            header.Location = new Point(13, 13);
-            this.Controls.Add(header);
-
-            ControlButtonsBar bar = new ControlButtonsBar(this,order,customer);
-            bar.Location = new Point(0, 109);
-            this.Controls.Add(bar);
-
-            ControlMain main = new ControlMain(order, customer, this,1, "");
-            main.Name = "main";
-            main.Location = new Point(13, 145);
-            this.Controls.Add(main);
-
-
-
-
-
+            ControlConectare controlConectare = new ControlConectare(this);
 
         }
     }

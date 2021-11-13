@@ -86,6 +86,13 @@ namespace Backend.Controller
             get => this.orders;
             set => this.orders = value;
         }
+        public Order orderAcc(int customer_id)
+        {
+            foreach (Order o in this.orders)
+                if (o.Custormer_id.Equals(customer_id) == true)
+                    return o;
+            return null;
+        }
 
         public int nextId()
         {

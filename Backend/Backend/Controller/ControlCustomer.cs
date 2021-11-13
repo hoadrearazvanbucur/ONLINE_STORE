@@ -85,7 +85,20 @@ namespace Backend.Controller
                     return customer;
             return null;
         }
-
+        public bool accVerification(string fullName,string password)
+        {
+            foreach (Customer c in this.customers)
+                if (c.Password.Equals(password) == true && c.FullName.Equals(fullName) == true)
+                    return true;
+            return false;
+        }
+        public Customer customerAcc(string fullName, string password)
+        {
+            foreach (Customer c in this.customers)
+                if (c.Password.Equals(password) == true && c.FullName.Equals(fullName) == true)
+                    return c;
+            return null;
+        }
         public List<Customer> Customers
         {
             get => this.customers;
