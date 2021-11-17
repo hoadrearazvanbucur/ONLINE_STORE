@@ -36,6 +36,7 @@ namespace Frontend
             layoutFooter();
             titlul();
             creare();
+
         }
 
         public void creare()
@@ -80,7 +81,7 @@ namespace Frontend
         {
             trimitere.Text = "Creare";
             trimitere.Font = new Font("Calibri", 12, FontStyle.Bold);
-            trimitere.Location = new Point(0, 300);
+            trimitere.Location = new Point(0, 330);
             trimitere.Size = new Size(this.footer.Width, 50);
             trimitere.Click += new EventHandler(trimitereC_Click);
         }
@@ -140,10 +141,15 @@ namespace Frontend
             Label t = new Label();
             t.Text = "Magazin Online";
             t.Font = new Font("Calibri", 20, FontStyle.Bold);
-            t.Location = new Point(0, 0);
-            t.Size = new Size(this.header.Width, this.header.Height);
+            t.Location = new Point(0, 30);
+            t.Size = new Size(this.header.Width, this.header.Height-30);
             t.TextAlign = ContentAlignment.MiddleCenter;
             this.header.Controls.Add(t);
+
+
+            PictureBox exitPicture = new PictureBox();
+            layoutExitPicture(exitPicture);
+            this.header.Controls.Add(exitPicture);
         }
 
         public void layoutPanel()
@@ -151,8 +157,8 @@ namespace Frontend
             this.header.Location = new Point(0, 0);
             this.footer.Location = new Point(0, this.forma.Height / 5);
 
-            this.header.Size = new Size(this.forma.Width - 15, this.forma.Height / 5);
-            this.footer.Size = new Size(this.forma.Width - 15, this.forma.Height - this.forma.Height / 5);
+            this.header.Size = new Size(this.forma.Width, this.forma.Height / 5);
+            this.footer.Size = new Size(this.forma.Width, this.forma.Height - this.forma.Height / 5);
 
             this.forma.Controls.Add(this.header);
             this.forma.Controls.Add(this.footer);
@@ -183,11 +189,33 @@ namespace Frontend
             this.footer.Controls.Add(trimitere);
         }
 
+        public void layoutExitPicture(PictureBox exitPicture)
+        {
+            exitPicture.Location = new Point(this.header.Width-30, 10);
+            exitPicture.Size = new Size(20, 20);
+            Image im = Image.FromFile(Application.StartupPath + @"\images\close.png");
+            exitPicture.BackgroundImage = im;
+            exitPicture.BackgroundImageLayout = ImageLayout.Stretch;
+            exitPicture.Cursor = Cursors.Hand;
+            exitPicture.Click += new EventHandler(exit_Click);
+        }
+        public void exit_Click(object sender, EventArgs e)
+        {
+            //Application.Exit();
+            this.forma.Controls.Clear();
+            this.header.Controls.Clear();
+            this.footer.Controls.Clear();
+            start();
+        }
+
+
+
+
         public void BtnTrimitere(Button trimitere)
         {
             trimitere.Text = "Conectare";
             trimitere.Font = new Font("Calibri", 12, FontStyle.Bold);
-            trimitere.Location = new Point(0, 300);
+            trimitere.Location = new Point(0, 330);
             trimitere.Size = new Size(this.footer.Width, 50);
             trimitere.Click += new EventHandler(trimitere_Click);
         }
@@ -249,7 +277,7 @@ namespace Frontend
                 //Order order = controlOrder.orderAcc(customer.Id);
                 Order order = new Order(new string[] { $"{controlOrder.nextId()}", $"{customer.Id}", "0", "Rasinari" });
 
-                MessageBox.Show(customer.afisare() + "\n\n\n" + order.afisare());
+                //MessageBox.Show(customer.afisare() + "\n\n\n" + order.afisare());
                 layoutForm();
                 this.forma.Controls.Clear();
                 ControlHeader header = new ControlHeader(this.forma, order, customer);
@@ -264,7 +292,6 @@ namespace Frontend
                 main.Name = "main";
                 main.Location = new Point(13, 145);
                 this.forma.Controls.Add(main);
-
             }
             else
                 MessageBox.Show("Contul nu exista!");

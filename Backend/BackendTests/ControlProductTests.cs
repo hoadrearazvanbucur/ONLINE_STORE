@@ -18,6 +18,26 @@ namespace BackendTests
             this.outputHelper = output;
         }
 
+        [Fact]
+        public void sortFiltr()
+        {
+            ControlProduct control = new ControlProduct();
+            string[] p1 = new string[] { "phone", "11", "11", "11", "11", "11", "11", "11", "11", "11", "11", "11", "11" };
+            string[] p2 = new string[] { "phone", "22", "22", "22", "22", "22", "22", "22", "22", "22", "22", "22", "22" };
+            string[] p3 = new string[] { "phone", "33", "33", "33", "33", "33", "33", "33", "33", "33", "33", "33", "33" };
+            Product product1 = new Product(p1);
+            Product product2 = new Product(p2);
+            Product product3 = new Product(p3);
+            control.adaugare(product3);
+            control.adaugare(product2);
+            control.adaugare(product1);
+
+            List<Product> sort = new List<Product>();
+            //sort = control.sortareNume(control.Products);
+            sort = control.filtrareNume(control.Products, "33");
+            foreach (Product p in sort)
+                outputHelper.WriteLine(p.afisare());
+        }
 
         [Fact]
         public void saveAdaugareStergere()
@@ -25,10 +45,13 @@ namespace BackendTests
             //Preconditie
             ControlProduct control = new ControlProduct();
             string[] p1 = new string[] { "phone", "11", "11", "11", "11", "11", "11", "11", "11", "11", "11", "11", "11" };
+            string[] t1 = new string[] { "tv", "22", "22", "22", "22", "22", "22", "22", "22", "22", "22", "22", "22" };
             Phone product1 = new Phone(p1);
+            TV tv1 = new TV(t1);
 
             //PostConditie
             control.adaugare(product1);
+            control.adaugare(tv1);
 
             //Actiune
             control.save();
@@ -36,10 +59,12 @@ namespace BackendTests
 
             //Verificare
             Assert.True(control.productId(11) >= 0);
+            Assert.True(control.productId(22) >= 0);
 
 
             //PostConditie
             control.stergere(11);
+            control.stergere(22);
 
             //Actiune
             control.save();
@@ -47,6 +72,7 @@ namespace BackendTests
 
             //Verificare
             Assert.True(control.productId(11) < 0);
+            Assert.True(control.productId(22) < 0);
         }
 
         [Fact]
@@ -161,7 +187,7 @@ namespace BackendTests
             Phone product1 = new Phone(p1);
             control.adaugare(product1);
 
-            control.updateScreenSize(1, 12345);
+            control.updateScreenSizePhone(1, 12345);
             Assert.Equal(12345, (control.productObjectID(1) as Phone).ScreenSize);
 
             control.stergere(1);
@@ -192,5 +218,19 @@ namespace BackendTests
 
             control.stergere(1);
         }
+
+        //[Fact]
+        //public void update()
+        //{
+        //    ControlProduct control = new ControlProduct();
+        //    string[] t1 = new string[] { "tv", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" };
+        //    TV tv1 = new TV(t1);
+        //    control.adaugare(tv1);
+
+        //    control.updateTVName(1, "");
+        //    Assert.Equal("", (control.productObjectID(1) as TV).);
+
+        //    control.stergere(1);
+        //}
     }
 }

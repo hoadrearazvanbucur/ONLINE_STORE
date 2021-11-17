@@ -59,10 +59,11 @@ namespace Frontend
             }
 
 
-            ControlSumar sumar = new ControlSumar(s,nr,order,this.form,this.customer);
+            ControlSumar sumar = new ControlSumar(s,nr,order,this.form,this.customer,this.controlOrderDetails);
             sumar.Location = new Point(800, 90);
             this.Controls.Add(sumar);
         }
+
 
 
         public void layoutCosulMeu(Label cosulMeu)

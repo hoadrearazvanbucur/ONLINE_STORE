@@ -85,7 +85,7 @@ namespace Frontend
             Panel cos = null;
             foreach (Control control in this.form.Controls)
             {
-                if (control is Panel && control.Name.Equals("cos") == true)
+                if (control is Panel && (control.Name.Equals("cos") == true|| control.Name.Equals("main") == true))
                     cos = control as Panel;
             }
             form.Controls.Remove(cos);

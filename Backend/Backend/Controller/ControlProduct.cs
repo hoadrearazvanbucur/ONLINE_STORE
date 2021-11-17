@@ -30,6 +30,10 @@ namespace Backend.ControlClass
                 string[] linieSplit = linie.Split(',');
                 if (linieSplit[0] == "phone")
                     products.Add(new Phone(linieSplit));
+                else
+                    if(linieSplit[0] == "tv")
+                        products.Add(new TV(linieSplit));
+
                 //else celelalte categorii
             }
             fisier.Close();
@@ -39,6 +43,7 @@ namespace Backend.ControlClass
             StreamWriter fisier = new StreamWriter(@"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\productFile.txt");
             foreach (Product product in products){
                 if(product is Phone)    fisier.WriteLine((product as Phone).ToString());
+                if(product is TV)    fisier.WriteLine((product as TV).ToString());
                 //celelalte categorii
             }
             fisier.Close();
@@ -54,6 +59,11 @@ namespace Backend.ControlClass
                 if (product is Phone){
                     Phone phone = product as Phone;
                     afis += phone.afisare();
+                }
+                else if (product is TV)
+                {
+                    TV tv = product as TV;
+                    afis += tv.afisare();
                 }
                 //celelalte categorii
 
@@ -105,7 +115,7 @@ namespace Backend.ControlClass
         {
             (products[productId(id)] as Phone).PhoneColor = phoneColorNou;
         }
-        public void updateScreenSize(int id, int screenSizeNou)
+        public void updateScreenSizePhone(int id, int screenSizeNou)
         {
             (products[productId(id)] as Phone).ScreenSize = screenSizeNou;
         }
@@ -117,6 +127,25 @@ namespace Backend.ControlClass
         {
             (products[productId(id)] as Phone).BatteryCapacity = batteryCapacityNou;
         }
+
+        //TV
+        public void updateTVName(int id, string tVName)
+        {
+            (products[productId(id)] as TV).TVName = tVName;
+        }
+        public void updateDisplayType(int id, string displayType)
+        {
+            (products[productId(id)] as TV).DisplayType = displayType;
+        }
+        public void updateEezolution(int id, string rezolution)
+        {
+            (products[productId(id)] as TV).Rezolution = rezolution;
+        }
+        public void updateScreenSizeTV(int id, int screenSize)
+        {
+            (products[productId(id)] as TV).ScreenSize = screenSize;
+        }
+
 
 
         public int productId(int id)
@@ -153,6 +182,75 @@ namespace Backend.ControlClass
                 return this.products[this.products.Count - 1].Id + 1;
             else
                 return 1;
+        }
+
+
+        public List<Product> filtrareNume(List<Product> lista, string nume)
+        {
+            List<Product> nou = new List<Product>();
+            foreach (Product product in lista)
+                if (product.Name.Equals(nume)==true)
+                    nou.Add(product);
+            return nou;
+        }
+        public List<Product> filtrarePrice(List<Product> lista, int price)
+        {
+            List<Product> nou = new List<Product>();
+            foreach (Product product in lista)
+                if (product.Price == price)
+                    nou.Add(product);
+            return nou;
+        }
+        public List<Product> filtrareStock(List<Product> lista, int stock)
+        {
+            List<Product> nou = new List<Product>();
+            foreach (Product product in lista)
+                if (product.Stock == stock)
+                    nou.Add(product);
+            return nou;
+        }
+
+        public List<Product> sortareNume(List<Product> lista)
+        {
+            for (int i=0;i<lista.Count-1;i++)
+            {
+                for (int j = i+1; j < lista.Count; j++)
+                    if(lista[i].Name[0] >= lista[j].Name[0])
+                    {
+                        Product aux = lista[i];
+                        lista[i]= lista[j];
+                        lista[j] = aux;
+                    }    
+            }
+            return lista;
+        }
+        public List<Product> sortarePrice(List<Product> lista)
+        {
+            for (int i = 0; i < lista.Count - 1; i++)
+            {
+                for (int j = i + 1; j < lista.Count; j++)
+                    if (lista[i].Price >= lista[j].Price)
+                    {
+                        Product aux = lista[i];
+                        lista[i] = lista[j];
+                        lista[j] = aux;
+                    }
+            }
+            return lista;
+        }
+        public List<Product> sortareStock(List<Product> lista)
+        {
+            for (int i = 0; i < lista.Count - 1; i++)
+            {
+                for (int j = i + 1; j < lista.Count; j++)
+                    if (lista[i].Stock >= lista[j].Stock)
+                    {
+                        Product aux = lista[i];
+                        lista[i] = lista[j];
+                        lista[j] = aux;
+                    }
+            }
+            return lista;
         }
     }
 }

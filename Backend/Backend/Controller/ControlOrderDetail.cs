@@ -87,7 +87,6 @@ namespace Backend.Controller
 
 
 
-        //orderId =>o lista cu toate detaliile ce au orderId introdus
         public List<OrderDetail> orderListId(int orderId)
         {
             List<OrderDetail> list = new List<OrderDetail>();

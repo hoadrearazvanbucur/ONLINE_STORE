@@ -46,6 +46,10 @@ namespace Frontend
             layoutSuportClienti(suportClienti);
             this.Controls.Add(suportClienti);
 
+            Button istoricComenzi = new Button();
+            layoutIstoricComenzi(istoricComenzi);
+            this.Controls.Add(istoricComenzi);
+
             PictureBox produseP = new PictureBox();
             layoutProduseP(produseP);
             produse.Controls.Add(produseP);
@@ -171,6 +175,34 @@ namespace Frontend
             form.Controls.Remove(cos);
 
             ControlMain main = new ControlMain(order, customer, this.form, 4, "");
+            main.Name = "main";
+            main.Location = new Point(13, 145);
+            this.form.Controls.Add(main);
+        }
+
+        public void layoutIstoricComenzi(Button istoricComenzi)
+        {
+            istoricComenzi.Text = "Istoric Comenzi";
+            istoricComenzi.Font = new Font("Cambria", 16, FontStyle.Bold);
+            istoricComenzi.FlatStyle = FlatStyle.Popup;
+            istoricComenzi.Cursor = Cursors.Hand;
+            istoricComenzi.BackColor = Color.Brown;
+            istoricComenzi.ForeColor = SystemColors.ControlLightLight;
+            istoricComenzi.Location = new Point(558 + 332, 0);
+            istoricComenzi.Size = new Size(200, 40);
+            istoricComenzi.Click += new EventHandler(istoricComenzi_Click);
+        }
+        public void istoricComenzi_Click(object sender, EventArgs e)
+        {
+            Panel cos = null;
+            foreach (Control control in this.form.Controls)
+            {
+                if (control is Panel && (control.Name.Equals("cos") == true || control.Name.Equals("main") == true))
+                    cos = control as Panel;
+            }
+            form.Controls.Remove(cos);
+
+            ControlMain main = new ControlMain(order, customer, this.form, 6, "");
             main.Name = "main";
             main.Location = new Point(13, 145);
             this.form.Controls.Add(main);

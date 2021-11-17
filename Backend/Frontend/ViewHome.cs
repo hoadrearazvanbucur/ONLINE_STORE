@@ -54,13 +54,7 @@ namespace Frontend
 
         public void layoutPanels()
         {
-            //Customer customer = new Customer(new string[] { "email", "password", "Razvan", "1" });
-            //Customer customer = new Customer(new string[] { "", "", "", "" });
-            //Order order = new Order(new string[] { "1", $"{customer.Id}", "0", "Rasinari" });
-            //Order order = new Order(new string[] { "", "", "", "" });
-
             ControlConectare controlConectare = new ControlConectare(this);
-
         }
     }
 }

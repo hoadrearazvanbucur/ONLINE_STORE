@@ -11,14 +11,16 @@ namespace Frontend
     public class ControlSumar : Panel
     {
         private ControlOrder controlOrder;
+        private ControlOrderDetail controlOrderDetail;
         private Order order;
         private Customer customer;
         private Form form;
         private double price;
         private int nr;
-        public ControlSumar(double price,int nr, Order order,Form form,Customer customer)
+        public ControlSumar(double price,int nr, Order order,Form form,Customer customer,ControlOrderDetail controlOrderDetail)
         {
             controlOrder = new ControlOrder();
+            this.controlOrderDetail = controlOrderDetail;
             this.order = order;
             this.form = form;
             this.customer = customer;
@@ -81,6 +83,7 @@ namespace Frontend
             totalA.Font = new Font("Cambria", 14, FontStyle.Regular);
             totalA.BackColor = SystemColors.ControlLightLight;
             totalA.TextAlign = ContentAlignment.MiddleCenter;
+            totalA.Name = "totalA";
             totalA.Text = "Subtotal:                  " + this.price + " Lei";
         }
 
@@ -112,6 +115,7 @@ namespace Frontend
             totalP.AutoSize = false;
             totalP.Location = new Point(0, 160);
             totalP.Size = new Size(250, 20);
+            totalP.Name = "totalP";
             totalP.Font = new Font("Cambria", 14, FontStyle.Regular);
             totalP.BackColor = SystemColors.ControlLightLight;
             totalP.TextAlign = ContentAlignment.MiddleCenter;
@@ -137,6 +141,8 @@ namespace Frontend
             controlOrder.save();
             MessageBox.Show("Comanda a fost trimisa cu succes!");
             Panel cos = null;
+            //this.controlOrderDetail.OrderDetail.Clear();
+            
             foreach (Control control in this.form.Controls)
             {
                 if (control is Panel && control.Name.Equals("cos") == true)

@@ -65,7 +65,7 @@ namespace Frontend
         {
             imagine.Location = new Point(0, 0);
             imagine.Size = new Size(200, 170);
-            Image im = Image.FromFile(this.image);
+            Image im = Image.FromFile(Application.StartupPath + @"\images\" + this.image+ ".png");
             imagine.Cursor = Cursors.Hand;
             imagine.BackgroundImage = im;
             imagine.BackgroundImageLayout = ImageLayout.Stretch;

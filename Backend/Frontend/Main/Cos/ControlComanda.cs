@@ -146,7 +146,7 @@ namespace Frontend
         {
             imagine.Location = new Point(0, 0);
             imagine.Size = new Size(200, 150);
-            Image im = Image.FromFile(this.image);
+            Image im = Image.FromFile(Application.StartupPath +@"\images\"+this.image+".png");
             imagine.Cursor = Cursors.Hand;
             imagine.BackgroundImage = im;
             imagine.BackgroundImageLayout = ImageLayout.Stretch;
@@ -172,6 +172,7 @@ namespace Frontend
             stergere.Font = new Font("Cambria", 14, FontStyle.Regular);
             stergere.BackColor = SystemColors.ControlLightLight;
             stergere.Text = "Stergere";
+            stergere.Name = "stergere";
             stergere.ForeColor = Color.Red;
             stergere.TextAlign = ContentAlignment.MiddleLeft;
             stergere.Cursor = Cursors.Hand;
