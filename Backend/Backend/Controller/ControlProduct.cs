@@ -215,7 +215,7 @@ namespace Backend.ControlClass
             for (int i=0;i<lista.Count-1;i++)
             {
                 for (int j = i+1; j < lista.Count; j++)
-                    if(lista[i].Name[0] >= lista[j].Name[0])
+                    if(lista[i].Name[0]+ (lista[i] as Phone).PhoneName[0] >= lista[j].Name[0] + (lista[j] as Phone).PhoneName[0])
                     {
                         Product aux = lista[i];
                         lista[i]= lista[j];

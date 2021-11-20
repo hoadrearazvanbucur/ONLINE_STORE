@@ -62,8 +62,8 @@ namespace Frontend
                 layoutSearch();
             if (this.buttonsBar == 6)
                 layoutIstoricComenzi();
-            if (this.buttonsBar == 7)
-                sortare(1);
+            if (this.buttonsBar/10 == 7)
+                sortare(this.buttonsBar % 10);
             if (this.buttonsBar == 8)
                 filtrare(1, "Apple");
 
@@ -314,8 +314,6 @@ namespace Frontend
 
         public void sortare(int k)
         {
-            comboSortare();
-            comboFiltrare();
             List<Product> lista = new List<Product>();
             if (k == 1)
                 lista = controlProducts.sortareNume(this.controlProducts.Products);
@@ -350,8 +348,6 @@ namespace Frontend
         }
         public void filtrare(int k, string text)
         {
-            comboSortare();
-            comboFiltrare();
             List<Product> lista = new List<Product>();
             if (k == 1)
                 lista = controlProducts.filtrareNume(this.controlProducts.Products, text);
@@ -388,8 +384,25 @@ namespace Frontend
 
         public void sortare_Click(object sender, EventArgs e)
         {
+            ComboBox comboBox = null;
+            foreach(Control control in this.Controls)
+            {
+                if (control.Name == "sortare" && control is ComboBox)
+                    comboBox = control as ComboBox;
+            }
+            int nr =7;
+
+            if (comboBox.Text == "Nume")
+                nr = nr * 10 + 1;
+            if (comboBox.Text == "Pret")
+                nr = nr * 10 + 2;
+            if (comboBox.Text== "Stoc")
+                nr = nr * 10 + 3;
+
+            MessageBox.Show(nr.ToString());
             this.form.Controls.Remove(this);
-            ControlMain main1 = new ControlMain(order, customer, this.form, 7, "");
+
+            ControlMain main1 = new ControlMain(order, customer, this.form, nr, "");
             main1.Name = "main";
             main1.Location = new Point(13, 145);
             this.form.Controls.Add(main1);
@@ -412,6 +425,7 @@ namespace Frontend
             comboBox.Items.Add("Nume");
             comboBox.Items.Add("Pret");
             comboBox.Items.Add("Stoc");
+            comboBox.Name = "sortare";
 
             Button sortare = new Button();
             sortare.AutoSize = false;
@@ -459,6 +473,7 @@ namespace Frontend
             comboBoxPret.Location = new Point(180, 360);
             comboBoxPret.Size = new Size(130, 40);
             comboBoxPret.Text = "Pret";
+            comboBoxPret.Name = "pret";
             comboBoxPret.Items.Add("0-1000");
             comboBoxPret.Items.Add("1000-2000");
             comboBoxPret.Items.Add(">2000");
@@ -468,6 +483,7 @@ namespace Frontend
             comboBoxStock.Location = new Point(350, 360);
             comboBoxStock.Size = new Size(130, 40);
             comboBoxStock.Text = "Stoc";
+            comboBoxStock.Name = "stoc";
             comboBoxStock.Items.Add("0-5");
             comboBoxStock.Items.Add("5-10");
             comboBoxStock.Items.Add(">10");
@@ -477,6 +493,7 @@ namespace Frontend
             comboBoxName.Location = new Point(450 + 70, 360);
             comboBoxName.Size = new Size(130, 40);
             comboBoxName.Text = "Nume";
+            comboBoxName.Name = "nume";
             comboBoxName.Items.Add("Samsung");
             comboBoxName.Items.Add("Apple");
         }
