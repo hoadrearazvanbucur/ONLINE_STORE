@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8A9dr/AO3mUhE9OzRR+/dh+4QZmt3pbaWuviIfKqU8Ef75wrKPL/RWmW1Ds5Q+HtzXb6hRITAcnBrrvCnbZTpw==",
+  "dgSpecHash": "RmjBFoCGENBrq6dhvdfZqxWxEhAEtItf1TYPR3rTU1MqYjiOnIcuMdfa3mTlCdmr24YMopJ3BVChSrt6qHZpWw==",
   "success": true,
-  "projectFilePath": "D:\\1_PROGRAMARE\\C#\\ONLINE_STORE\\Backend\\BackendTests\\BackendTests.csproj",
+  "projectFilePath": "D:\\1_PROGRAMARE\\C#\\PROIECTE\\ONLINE_STORE\\Backend\\BackendTests\\BackendTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Hoadrea Razvan\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",
     "C:\\Users\\Hoadrea Razvan\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",

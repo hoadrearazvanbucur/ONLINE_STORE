@@ -23,7 +23,7 @@ namespace Backend.ControlClass
         public void load()
         {
             this.products.Clear();
-            StreamReader fisier = new StreamReader(@"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\productFile.txt");
+            StreamReader fisier = new StreamReader(@"D:\1_PROGRAMARE\C#\PROIECTE\ONLINE_STORE\Backend\Backend\Controller\Resources\productFile.txt");
             string linie = "";
             while ((linie = fisier.ReadLine()) != null)
             {
@@ -40,7 +40,7 @@ namespace Backend.ControlClass
         }
         public void save()
         {
-            StreamWriter fisier = new StreamWriter(@"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\productFile.txt");
+            StreamWriter fisier = new StreamWriter(@"D:\1_PROGRAMARE\C#\PROIECTE\ONLINE_STORE\Backend\Backend\Controller\Resources\productFile.txt");
             foreach (Product product in products){
                 if(product is Phone)    fisier.WriteLine((product as Phone).ToString());
                 if(product is TV)    fisier.WriteLine((product as TV).ToString());

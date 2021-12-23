@@ -20,7 +20,7 @@ namespace Backend.Controller
         public void load()
         {
             this.orders.Clear();
-            string path = @"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\orderFile.txt";
+            string path = @"D:\1_PROGRAMARE\C#\PROIECTE\ONLINE_STORE\Backend\Backend\Controller\Resources\orderFile.txt";
             StreamReader fisier = new StreamReader(path);
             string linie = "";
             while ((linie = fisier.ReadLine()) != null){
@@ -31,7 +31,7 @@ namespace Backend.Controller
         }
         public void save()
         {
-            string path = @"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\orderFile.txt";
+            string path = @"D:\1_PROGRAMARE\C#\PROIECTE\ONLINE_STORE\Backend\Backend\Controller\Resources\orderFile.txt";
             StreamWriter fisier = new StreamWriter(path);
             foreach (Order order in orders)
                 fisier.WriteLine(order.ToString());

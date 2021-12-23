@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\1_PROGRAMARE\\C#\\ONLINE_STORE\\Backend\\Backend\\Backend.csproj": {}
+    "D:\\1_PROGRAMARE\\C#\\PROIECTE\\ONLINE_STORE\\Backend\\Backend\\Backend.csproj": {}
   },
   "projects": {
-    "D:\\1_PROGRAMARE\\C#\\ONLINE_STORE\\Backend\\Backend\\Backend.csproj": {
+    "D:\\1_PROGRAMARE\\C#\\PROIECTE\\ONLINE_STORE\\Backend\\Backend\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\1_PROGRAMARE\\C#\\ONLINE_STORE\\Backend\\Backend\\Backend.csproj",
+        "projectUniqueName": "D:\\1_PROGRAMARE\\C#\\PROIECTE\\ONLINE_STORE\\Backend\\Backend\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "D:\\1_PROGRAMARE\\C#\\ONLINE_STORE\\Backend\\Backend\\Backend.csproj",
+        "projectPath": "D:\\1_PROGRAMARE\\C#\\PROIECTE\\ONLINE_STORE\\Backend\\Backend\\Backend.csproj",
         "packagesPath": "C:\\Users\\Hoadrea Razvan\\.nuget\\packages\\",
-        "outputPath": "D:\\1_PROGRAMARE\\C#\\ONLINE_STORE\\Backend\\Backend\\obj\\",
+        "outputPath": "D:\\1_PROGRAMARE\\C#\\PROIECTE\\ONLINE_STORE\\Backend\\Backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

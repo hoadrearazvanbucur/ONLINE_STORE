@@ -20,7 +20,7 @@ namespace Backend.Controller
         public void load()
         {
             this.orderDetails.Clear();
-            StreamReader fisier = new StreamReader(@"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\orderDetailFile.txt");
+            StreamReader fisier = new StreamReader(@"D:\1_PROGRAMARE\C#\PROIECTE\ONLINE_STORE\Backend\Backend\Controller\Resources\orderDetailFile.txt");
             string linie = "";
             while ((linie = fisier.ReadLine()) != null){
                 string[] linieSplit = linie.Split(',');
@@ -30,7 +30,7 @@ namespace Backend.Controller
         }
         public void save()
         {
-            StreamWriter fisier = new StreamWriter(@"D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\Controller\Resources\orderDetailFile.txt");
+            StreamWriter fisier = new StreamWriter(@"D:\1_PROGRAMARE\C#\PROIECTE\ONLINE_STORE\Backend\Backend\Controller\Resources\orderDetailFile.txt");
             foreach (OrderDetail orderDetail in orderDetails)
                 fisier.WriteLine(orderDetail.ToString());
             fisier.Close();

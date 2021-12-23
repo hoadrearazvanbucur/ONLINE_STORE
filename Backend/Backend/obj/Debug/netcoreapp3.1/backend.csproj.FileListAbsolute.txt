@@ -11,3 +11,16 @@ D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\bin\Debug\netcoreapp3.1\backend.
 D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\obj\Debug\netcoreapp3.1\backend.dll
 D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\obj\Debug\netcoreapp3.1\backend.pdb
 D:\1_PROGRAMARE\C#\ONLINE_STORE\Backend\Backend\obj\Debug\netcoreapp3.1\backend.genruntimeconfig.cache
+D:\1_PROGRAMARE\C#\PROIECTE\ONLINE_STORE\Backend\Backend\bin\Debug\netcoreapp3.1\Backend.exe
+D:\1_PROGRAMARE\C#\PROIECTE\ONLINE_STORE\Backend\Backend\bin\Debug\netcoreapp3.1\Backend.deps.json
+D:\1_PROGRAMARE\C#\PROIECTE\ONLINE_STORE\Backend\Backend\bin\Debug\netcoreapp3.1\Backend.runtimeconfig.json
+D:\1_PROGRAMARE\C#\PROIECTE\ONLINE_STORE\Backend\Backend\bin\Debug\netcoreapp3.1\Backend.runtimeconfig.dev.json
+D:\1_PROGRAMARE\C#\PROIECTE\ONLINE_STORE\Backend\Backend\bin\Debug\netcoreapp3.1\Backend.dll
+D:\1_PROGRAMARE\C#\PROIECTE\ONLINE_STORE\Backend\Backend\bin\Debug\netcoreapp3.1\Backend.pdb
+D:\1_PROGRAMARE\C#\PROIECTE\ONLINE_STORE\Backend\Backend\obj\Debug\netcoreapp3.1\Backend.csprojAssemblyReference.cache
+D:\1_PROGRAMARE\C#\PROIECTE\ONLINE_STORE\Backend\Backend\obj\Debug\netcoreapp3.1\Backend.AssemblyInfoInputs.cache
+D:\1_PROGRAMARE\C#\PROIECTE\ONLINE_STORE\Backend\Backend\obj\Debug\netcoreapp3.1\Backend.AssemblyInfo.cs
+D:\1_PROGRAMARE\C#\PROIECTE\ONLINE_STORE\Backend\Backend\obj\Debug\netcoreapp3.1\Backend.csproj.CoreCompileInputs.cache
+D:\1_PROGRAMARE\C#\PROIECTE\ONLINE_STORE\Backend\Backend\obj\Debug\netcoreapp3.1\Backend.dll
+D:\1_PROGRAMARE\C#\PROIECTE\ONLINE_STORE\Backend\Backend\obj\Debug\netcoreapp3.1\Backend.pdb
+D:\1_PROGRAMARE\C#\PROIECTE\ONLINE_STORE\Backend\Backend\obj\Debug\netcoreapp3.1\Backend.genruntimeconfig.cache

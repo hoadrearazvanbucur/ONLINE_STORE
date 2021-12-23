@@ -3527,11 +3527,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\1_PROGRAMARE\\C#\\ONLINE_STORE\\Backend\\BackendTests\\BackendTests.csproj",
+      "projectUniqueName": "D:\\1_PROGRAMARE\\C#\\PROIECTE\\ONLINE_STORE\\Backend\\BackendTests\\BackendTests.csproj",
       "projectName": "BackendTests",
-      "projectPath": "D:\\1_PROGRAMARE\\C#\\ONLINE_STORE\\Backend\\BackendTests\\BackendTests.csproj",
+      "projectPath": "D:\\1_PROGRAMARE\\C#\\PROIECTE\\ONLINE_STORE\\Backend\\BackendTests\\BackendTests.csproj",
       "packagesPath": "C:\\Users\\Hoadrea Razvan\\.nuget\\packages\\",
-      "outputPath": "D:\\1_PROGRAMARE\\C#\\ONLINE_STORE\\Backend\\BackendTests\\obj\\",
+      "outputPath": "D:\\1_PROGRAMARE\\C#\\PROIECTE\\ONLINE_STORE\\Backend\\BackendTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -3551,8 +3551,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\1_PROGRAMARE\\C#\\ONLINE_STORE\\Backend\\Backend\\Backend.csproj": {
-              "projectPath": "D:\\1_PROGRAMARE\\C#\\ONLINE_STORE\\Backend\\Backend\\Backend.csproj"
+            "D:\\1_PROGRAMARE\\C#\\PROIECTE\\ONLINE_STORE\\Backend\\Backend\\Backend.csproj": {
+              "projectPath": "D:\\1_PROGRAMARE\\C#\\PROIECTE\\ONLINE_STORE\\Backend\\Backend\\Backend.csproj"
             }
           }
         }
